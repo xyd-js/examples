@@ -1,0 +1,3 @@
+[submodule "deploy-samples"]
+	path = deploy-samples
+	url = https://github.com/xyd-js/deploy-samples
