@@ -1,0 +1,43 @@
+{
+    "theme": {
+        "name": "opener"
+    },
+    "navigation": {
+        "tabs": [
+            {
+                "title": "Docs",
+                "page": "docs"
+            },
+            {
+                "title": "Books API Reference",
+                "page": "docs/api/books-api"
+            },
+            {
+                "title": "Todo API Reference",
+                "page": "docs/api/todos-api"
+            }
+        ],
+        "sidebar": [
+            {
+                "route": "docs",
+                "pages": [
+                    {
+                        "group": "Get Started",
+                        "pages": [
+                            "docs/overview"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "api": {
+        "openapi": [
+            {
+                "source": "./books-api.yaml",
+                "route": "docs/api/books-api"
+            },
+            "./todos-api.yaml"
+        ]
+    }
+}

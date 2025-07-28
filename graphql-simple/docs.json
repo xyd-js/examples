@@ -1,0 +1,36 @@
+{
+    "theme": {
+        "name": "opener"
+    },
+    "navigation": {
+        "tabs": [
+            {
+                "title": "Docs",
+                "page": "docs"
+            },
+            {
+                "title": "API Reference",
+                "page": "docs/api-reference"
+            }
+        ],
+        "sidebar": [
+            {
+                "route": "docs",
+                "pages": [
+                    {
+                        "group": "Get Started",
+                        "pages": [
+                            "docs/overview"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "api": {
+        "graphql": {
+            "source": "./schema.graphql",
+            "route": "docs/api-reference"
+        }
+    }
+}
