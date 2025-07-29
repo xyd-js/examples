@@ -1,0 +1,111 @@
+"""
+Root-level query operations for fetching data.
+"""
+type Query {
+  """
+  Retrieve a book by its title.
+  Optionally filter by publication date.
+  
+  """
+  getBookByTitle(
+    """The title of the book to search for."""
+    title: String!
+
+    """Optional publication date to narrow the search."""
+    date: String
+  ): Book
+}
+
+"""
+Root-level mutation operations for creating data.
+"""
+type Mutation {
+  """
+  Add a new book to the system.
+  
+  """
+  addBook(
+    """The data for the book to create."""
+    input: BookInput!
+  ): Book
+
+  """
+  Add a new author.
+
+  """
+  addAuthor(
+    """The data for the author to create."""
+    input: AuthorInput!
+  ): Author
+}
+
+"""
+Represents a book with its title, author name, and additional info.
+"""
+type Book {
+  """The title of the book."""
+  title: String!
+
+  """The name of the book's author."""
+  author_name: String!
+
+  """Additional metadata about the book."""
+  info: BookInfo!
+}
+
+"""
+Detailed information about a book.
+"""
+type BookInfo {
+  """The publication date of the book (ISO format)."""
+  date: String!
+}
+
+"""
+Represents an author with an optional list of books.
+"""
+type Author {
+  """The name of the author."""
+  name: String!
+
+  """A list of book titles written by the author."""
+  books: [String!]
+}
+
+"""
+Input type for creating a new book.
+"""
+input BookInput {
+  """The title of the book."""
+  title: String!
+
+  """Additional book metadata like publication date."""
+  info: BookInfoInput!
+}
+
+"""
+Input type for setting book metadata.
+"""
+input BookInfoInput {
+  """The publication date of the book (ISO format)."""
+  date: String!
+}
+
+"""
+Input type for creating a new author.
+"""
+input AuthorInput {
+  """The name of the author to create."""
+  name: String!
+}
+
+"""
+Standard error response for failed operations.
+"""
+type Error {
+  """A user-friendly error message."""
+  message: String!
+
+  """An optional machine-readable error code."""
+  code: String
+}

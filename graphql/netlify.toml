@@ -1,0 +1,15 @@
+[build]
+  command = "bunx @xyd-js/cli build"
+  publish = ".xyd/build/client"
+  
+[[redirects]]
+  from = "/"
+  to = "/docs"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/index.html"
+  to = "/docs"
+  status = 301
+  force = true

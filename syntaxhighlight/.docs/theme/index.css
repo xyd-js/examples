@@ -1,0 +1,7 @@
+@import "./graphql.css";
+@import "./rest.css";
+
+:root {
+    --syntax1: #00f4b9;
+    --syntax2: #000;
+}

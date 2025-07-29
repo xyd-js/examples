@@ -1,0 +1,186 @@
+type Query
+type Mutation
+
+extend schema @docs(
+  route: "docs/api/todos-api",
+  group: ["API & Reference"],
+  sortStack: [
+      ["Queries", "Mutations", "Subscriptions", "Inputs", "Objects", "Interfaces", "Unions", "Enums", "Scalars"],
+      ["Scalars", "Enums", "Interfaces", "Unions", "Objects", "Inputs"],
+  ],
+  sort: [
+      {
+          group: ["Todos"],
+      },
+      {
+          group: ["GraphQL Types"],
+          stack: 1
+      }
+  ]
+)
+
+extend type Query @doc(
+  group: ["Todos", "Queries"],
+  path: "todos/queries"
+) {
+  """
+  Retrieve a list of all todo items.
+
+  - You can optionally filter by completion status.
+  - You can limit the number of returned items.
+
+  """
+  getAllTodos(
+    """Filter todos by whether they are completed."""
+    completed: Boolean
+
+    """Maximum number of todos to return (default: 10, max: 100)."""
+    limit: Int = 10
+  ): [Todo!]! @doc(path: "all")
+
+  """
+  Retrieve a single todo item by its unique ID.
+
+  """
+  getTodoById(
+    """ID of the todo to fetch."""
+    id: ID!
+  ): Todo @doc(path: "get")
+}
+
+extend type Mutation @doc(
+  group: ["Todos", "Mutations"],
+  path: "todos/mutations"
+) {
+  """
+  Create a new todo item.
+
+  """
+  createTodo(
+    """The todo data to create."""
+    input: TodoInput!
+  ): Todo! @doc(path: "create")
+
+  """
+  Update an existing todo item by its ID.
+  """
+  updateTodo(
+    """ID of the todo to update."""
+    id: ID!
+
+    """New values to update the todo with."""
+    input: TodoInput!
+  ): Todo! @doc(path: "update")
+
+  """
+  Delete a todo item by its ID.
+
+  Returns true if the item was successfully deleted.
+  """
+  deleteTodo(
+    """ID of the todo to delete."""
+    id: ID!
+  ): Boolean! @doc(path: "delete")
+
+  """
+  Mark a todo item as completed.
+  """
+  completeTodo(
+    """ID of the todo to mark as completed."""
+    id: ID!
+  ): Todo! @doc(path: "complete")
+}
+
+"""
+Represents a single todo item.
+"""
+type Todo @doc(
+  group: ["Todos", "Objects"],
+  path: "todos/objects"
+) {
+  """Unique identifier of the todo."""
+  id: ID!
+
+  """The main title of the todo."""
+  title: String!
+
+  """An optional detailed description."""
+  description: String
+
+  """Whether the todo has been completed."""
+  completed: Boolean!
+
+  """Priority level of the todo (low, medium, high)."""
+  priority: Priority!
+
+  """Due date for the todo (ISO 8601 format)."""
+  due_date: String
+
+  """Timestamp of when the todo was created."""
+  created_at: String!
+
+  """Timestamp of the last update."""
+  updated_at: String
+}
+
+"""
+Input fields for creating or updating a todo.
+"""
+input TodoInput @doc(
+  group: ["Todos", "Inputs"],
+  path: "todos/inputs"
+) {
+  """The main title of the todo."""
+  title: String!
+
+  """An optional detailed description."""
+  description: String
+
+  """Priority level of the todo. Defaults to medium."""
+  priority: Priority = medium
+
+  """Due date in ISO 8601 format (e.g., 2024-01-15T18:00:00Z)."""
+  due_date: String
+}
+
+"""
+Available priority levels for a todo.
+"""
+enum Priority @doc(
+  group: ["GraphQL Types", "Enums"],
+  path: "graphql-types/enums"
+) {
+  """Low priority."""
+  low
+
+  """Medium priority."""
+  medium
+
+  """High priority."""
+  high
+}
+
+"""
+Standard error object returned when something goes wrong.
+"""
+type Error @doc(
+  group: ["GraphQL Types", "Objects"],
+  path: "graphql-types/objects"
+) {
+  """User-friendly error message."""
+  message: String!
+
+  """Optional internal error code."""
+  code: String
+
+  """Additional details about the error."""
+  details: JSON
+}
+
+"""
+Arbitrary JSON object used in error details.
+"""
+scalar JSON @doc(
+  group: ["GraphQL Types", "Scalars"],
+  path: "graphql-types/scalars"
+)

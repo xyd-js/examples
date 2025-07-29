@@ -1,3 +1,9 @@
 [submodule "deploy-samples"]
 	path = deploy-samples
 	url = https://github.com/xyd-js/deploy-samples
+[submodule "monday-clone"]
+	path = monday-clone
+	url = https://github.com/xyd-js/monday-clone
+[submodule "openai-clone"]
+	path = openai-clone
+	url = https://github.com/xyd-js/openai-clone

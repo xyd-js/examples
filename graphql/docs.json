@@ -1,0 +1,73 @@
+{
+    "theme": {
+        "name": "gusto",
+        "logo": {
+            "light": "/public/logo.svg",
+            "dark": "/public/logo.svg",
+            "page": "docs"
+        },
+        "favicon": "/public/logo.svg"
+    },
+    "navigation": {
+        "tabs": [
+            {
+                "title": "Docs",
+                "page": "docs"
+            },
+            {
+                "title": "Books API Reference",
+                "page": "docs/api/books-api"
+            },
+            {
+                "title": "Todos API Reference",
+                "page": "docs/api/todos-api"
+            }
+        ],
+        "sidebar": [
+            {
+                "route": "docs",
+                "pages": [
+                    {
+                        "group": "Get Started",
+                        "pages": [
+                            "docs/overview"
+                        ]
+                    }
+                ]
+            },
+            {
+                "route": "docs/api/todos-api",
+                "pages": [
+                    {
+                        "group": "API & Reference",
+                        "sort": 0,
+                        "pages": [
+                            "docs/api/todos-api/introduction"
+                        ]
+                    }
+                ]
+            },
+            {
+                "route": "docs/api/books-api",
+                "pages": [
+                    {
+                        "group": "API & Reference",
+                        "sort": 0,
+                        "pages": [
+                            "docs/api/books-api/introduction"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "api": {
+        "graphql": [
+            {
+                "source": "./books-api.graphql",
+                "route": "docs/api/books-api"
+            },
+            "./todos-api.graphql"
+        ]
+    }
+} 

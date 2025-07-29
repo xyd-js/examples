@@ -1,0 +1,10 @@
+:root {
+    --syntax-gqlBackground: #462b52;
+    --syntax-gqlObject: #ff97d7;
+    --syntax-gqlOperationKeyword: #ebaf26;
+
+    xyd-layout-primary[id="graphql"] {
+        --syntax1: var(--syntax-gqlObject);
+        --syntax2: var(--syntax-gqlBackground);
+    }
+}
