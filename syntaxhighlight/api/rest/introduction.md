@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: REST Highlight
 ---
 
 # REST Syntax Highlight

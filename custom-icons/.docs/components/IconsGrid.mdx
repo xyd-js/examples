@@ -1,0 +1,64 @@
+export const icons = [
+    {
+        name: "ls:livesession",
+        label: "ls:livesession"
+    },
+    {
+        name: "ls:play",
+        label: "ls:play"
+    },
+    {
+        name: "ls:metrics",
+        label: "ls:metrics"
+    },
+    {
+        name: "ls:sessions-dashed",
+        label: "ls:sessions-dashed"
+    },
+    {
+        name: "ls:funnel-metric",
+        label: "ls:funnel-metric"
+    },
+       {
+        name: "ls:console",
+        label: "ls:console"
+    },
+];
+
+export function IconsGrid() {
+    const [copiedIcon, setCopiedIcon] = React.useState(null);
+    const timeoutRef = React.useRef(null);
+
+    const copyToClipboard = (iconName) => {
+        // Clear any existing timeout
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+        
+        navigator.clipboard.writeText(iconName).then(() => {
+            setCopiedIcon(iconName);
+            timeoutRef.current = setTimeout(() => setCopiedIcon(null), 2000);
+        }).catch(err => {
+            console.error('Failed to copy icon name:', err)
+        })
+    };
+
+    return <>
+        <div data-content-element className="icons-grid">
+            {icons.map((icon) => (
+                <button key={icon.name} className="icon-preview" onClick={() => copyToClipboard(icon.name)}>
+                    <Icon name={icon.name} />
+                    <span>{icon.label}</span>
+                </button>
+            ))}
+        </div>
+        
+        {copiedIcon && (
+            <div className="copy-notification">
+                ✓ Copied "{copiedIcon}" to clipboard
+            </div>
+        )}
+    </>
+}
+
+<IconsGrid/>

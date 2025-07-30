@@ -1,6 +1,8 @@
 ## Installation
 
+:::::details{kind="tertiary" title="Installation Quickstart" label="Get started with xyd in 3 simple steps"}
 ::::steps
+
 1. Install the <code>xyd</code> CLI:
 :::code-group{title="xyd installation"}
 ```bash bun
@@ -29,3 +31,4 @@ xyd
 
 3. Enjoy!
 ::::
+:::::

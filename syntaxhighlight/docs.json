@@ -9,41 +9,40 @@
         }
     },
     "navigation": {
-        "sidebarDropdown": [
-            {
-                "title": "Guides",
-                "page": "guides"
-            },
-            {
-                "title": "REST",
-                "page": "api/rest"
-            },
-            {
-                "title": "GraphQL",
-                "page": "api/graphql"
-            }
-        ],
         "sidebar": [
             {
-                "route": "guides",
                 "pages": [
-                    "guides/introduction"
-                ]
-            },
-            {
-                "route": "api/rest",
-                "id": "rest",
-                "pages": [
-                    "api/rest/introduction"
-                ]
-            },
-            {
-                "route": "api/graphql",
-                "id": "graphql",
-                "pages": [
-                    "api/graphql/introduction"
+                    {
+                        "group": false,
+                        "route": "guides",
+                        "id": "guides",
+                        "pages": [
+                            "guides/introduction"
+                        ]
+                    },
+                    {
+                        "group": false,
+                        "route": "api/rest",
+                        "id": "rest",
+                        "pages": [
+                            "api/rest/introduction"
+                        ]
+                    },
+                    {
+                        "group": false,
+                        "route": "api/graphql",
+                        "id": "graphql",
+                        "pages": [
+                            "api/graphql/introduction"
+                        ]
+                    }
                 ]
             }
         ]
+    },
+    "engine": {
+        "paths": {
+            "@snippets/*": "../.snippets/*"
+        }
     }
 }

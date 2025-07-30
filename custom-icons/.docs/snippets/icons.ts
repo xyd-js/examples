@@ -9,8 +9,8 @@ import {
 
 (async () => {
     // Import icons
-    const iconSet = await importDirectory('icons/svg', {
-        prefix: 'ls',
+    const iconSet = await importDirectory('YOUR-ICONS-DIRECTORY', {
+        prefix: 'YOUR-PREFIX',
     });
 
     // Validate, clean up, fix palette and optimise

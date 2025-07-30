@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: GraphQL Highlight
 ---
 
 # GraphQL Syntax Highlight
