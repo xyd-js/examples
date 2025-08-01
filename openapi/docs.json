@@ -8,6 +8,19 @@
         },
         "favicon": "/public/logo.svg"
     },
+    "integrations": {
+        ".apps": {
+            "githubStar": {
+                "title": "Star",
+                "label": "Show your support! Star us on GitHub ⭐️",
+                "href": "https://github.com/livesession/xyd",
+                "dataIcon": "octicon-star",
+                "dataSize": "large",
+                "dataShowCount": true,
+                "ariaLabel": "Star livesession/xyd on GitHub"
+            }
+        }
+    },
     "navigation": {
         "tabs": [
             {
@@ -36,11 +49,30 @@
                 ]
             },
             {
+                "route": "docs/api/todos-api",
+                "pages": [
+                    {
+                        "group": "API & Reference",
+                        "order": 0,
+                        "pages": [
+                            "docs/api/todos-api/introduction"
+                        ]
+                    },
+                    {
+                        "group": "Changelog",
+                        "order": -1,
+                        "pages": [
+                            "docs/api/todos-api/changelog/updates"
+                        ]
+                    }
+                ]
+            },
+            {
                 "route": "docs/api/books-api",
                 "pages": [
                     {
                         "group": "API & Reference",
-                        "sort": 0,
+                        "order": 0,
                         "pages": [
                             "docs/api/books-api/introduction"
                         ]

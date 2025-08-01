@@ -8,7 +8,7 @@ type Query {
   
   """
   getBookByTitle(
-    """The title of the book to search for."""
+    """The title of the book to search for v3."""
     title: String!
 
     """Optional publication date to narrow the search."""

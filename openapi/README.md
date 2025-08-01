@@ -1,3 +1,4 @@
+# OpenAPI Example
 
 ## Features
 

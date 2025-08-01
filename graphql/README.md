@@ -1,3 +1,5 @@
+# GraphQL Example
+
 ## Features
 
 | Feature | Description |
@@ -8,3 +10,4 @@
 | [Navigation Customization](https://docs.xyd.dev/docs/guides/graphql#navigation-customization) | Customize navigation structure with @doc directives |
 | [Sort Configuration](https://docs.xyd.dev/docs/guides/graphql#sort) | Customize the order of types in documentation |
 | [Sort Stacks](https://docs.xyd.dev/docs/guides/graphql#sort) | Reduce boilerplate with reusable sort patterns | 
+| [Sidebar Order](https://docs.xyd.dev/docs/guides/navigation?order=top#order) | Set custom order of groups in sidebars configuration

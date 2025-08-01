@@ -21,7 +21,6 @@ npm i -g xyd-js
 2. Clone GitHub repo:
 ```bash [lines]
 git clone https://github.com/xyd-js/examples
-cd examples/icons
 ``` 
 
 3. Run dev server:
@@ -32,3 +31,4 @@ xyd
 3. Enjoy!
 ::::
 :::::
+

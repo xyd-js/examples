@@ -5,10 +5,60 @@
             "search": false
         },
         "coder": {
-            "syntaxHighlight": "./theme.json"
+            "syntaxHighlight": "./.docs/syntax.json"
+        }
+    },
+    "integrations": {
+        ".apps": {
+            "githubStar": {
+                "title": "Star",
+                "label": "Show your support! Star us on GitHub ⭐️",
+                "href": "https://github.com/livesession/xyd",
+                "dataIcon": "octicon-star",
+                "dataSize": "large",
+                "dataShowCount": true,
+                "ariaLabel": "Star livesession/xyd on GitHub"
+            }
         }
     },
     "navigation": {
+        "sidebarDropdown__UNCOMMENT": [
+            {
+                "title": "Guides",
+                "page": "guides"
+            },
+            {
+                "title": "REST",
+                "page": "api/rest"
+            },
+            {
+                "title": "GraphQL",
+                "page": "api/graphql"
+            }
+        ],
+        "sidebar__UNCOMMENT": [
+            {
+                "route": "guides",
+                "id": "guides",
+                "pages": [
+                    "guides/introduction"
+                ]
+            },
+            {
+                "route": "api/rest",
+                "id": "rest",
+                "pages": [
+                    "api/rest/introduction"
+                ]
+            },
+            {
+                "route": "api/graphql",
+                "id": "graphql",
+                "pages": [
+                    "api/graphql/introduction"
+                ]
+            }
+        ],
         "sidebar": [
             {
                 "pages": [

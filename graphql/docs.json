@@ -3,10 +3,30 @@
         "name": "gusto",
         "logo": {
             "light": "/public/logo.svg",
-            "dark": "/public/logo.svg",
-            "page": "docs"
+            "dark": "/public/logo.svg"
         },
         "favicon": "/public/logo.svg"
+    },
+    "integrations": {
+        ".apps": {
+            "githubStar": {
+                "title": "Star",
+                "label": "Show your support! Star us on GitHub ⭐️",
+                "href": "https://github.com/livesession/xyd",
+                "dataIcon": "octicon-star",
+                "dataSize": "large",
+                "dataShowCount": true,
+                "ariaLabel": "Star livesession/xyd on GitHub"
+            }
+        }
+    },
+    "components": {
+        "banner2": {
+            "content": "**xyd 0.1.x** - Docs platform for future dev",
+            "label": "Coming Soon v2.0.0",
+            "icon": "sparkles",
+            "href": "https://github.com/orgs/livesession/projects/4/views/1"
+        }
     },
     "navigation": {
         "tabs": [
@@ -40,9 +60,16 @@
                 "pages": [
                     {
                         "group": "API & Reference",
-                        "sort": 0,
+                        "order": 0,
                         "pages": [
                             "docs/api/todos-api/introduction"
+                        ]
+                    },
+                    {
+                        "group": "Changelog",
+                        "order": -1,
+                        "pages": [
+                            "docs/api/todos-api/changelog/updates"
                         ]
                     }
                 ]
@@ -52,7 +79,7 @@
                 "pages": [
                     {
                         "group": "API & Reference",
-                        "sort": 0,
+                        "order": 0,
                         "pages": [
                             "docs/api/books-api/introduction"
                         ]
@@ -70,4 +97,4 @@
             "./todos-api.graphql"
         ]
     }
-} 
+}

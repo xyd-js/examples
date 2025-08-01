@@ -1,0 +1,26 @@
+{
+    "theme": {
+        "name": "gusto",
+        "appearance": {
+            "search": false
+        }
+    },
+    "integrations": {
+        ".apps": {
+            "githubStar": {
+                "title": "Star",
+                "label": "Show your support! Star us on GitHub ⭐️",
+                "href": "https://github.com/livesession/xyd",
+                "dataIcon": "octicon-star",
+                "dataSize": "large",
+                "dataShowCount": true,
+                "ariaLabel": "Star livesession/xyd on GitHub"
+            }
+        }
+    },
+    "engine": {
+        "paths": {
+            "@snippets/*": "../.snippets/*"
+        }
+    }
+}

@@ -23,7 +23,7 @@ x-docs:
     - java
   route: "docs/api/todos-api"
   sidebar:
-  - group: API & Reference
+  -
     pages:
       - group: Todos
         path: todos

@@ -3,7 +3,7 @@ type Mutation
 
 extend schema @docs(
   route: "docs/api/todos-api",
-  group: ["API & Reference"],
+  group: [],
   sortStack: [
       ["Queries", "Mutations", "Subscriptions", "Inputs", "Objects", "Interfaces", "Unions", "Enums", "Scalars"],
       ["Scalars", "Enums", "Interfaces", "Unions", "Objects", "Inputs"],
