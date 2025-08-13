@@ -5,7 +5,9 @@
   <p><h3 align="center">Ready-to-run xyd examples 🚀</h3></p>
   <a href="https://www.xyd.dev/">Website</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-  <a href="https://www.docs.xyd.dev">Docs</a>
+  <a href="https://github.com/livesession/xyd">Github</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://xyd-docs.slack.com">Slack</a>
 </div>
 
 <hr>
