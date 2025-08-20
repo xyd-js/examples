@@ -4,12 +4,12 @@
   
 [[redirects]]
   from = "/"
-  to = "/docs"
+  to = "/docs/overview"
   status = 301
   force = true
 
 [[redirects]]
   from = "/index.html"
-  to = "/docs"
+  to = "/docs/overview"
   status = 301
   force = true

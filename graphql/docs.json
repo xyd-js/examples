@@ -3,7 +3,8 @@
         "name": "gusto",
         "logo": {
             "light": "/public/logo.svg",
-            "dark": "/public/logo.svg"
+            "dark": "/public/logo.svg",
+            "page": "docs/overview"
         },
         "favicon": "/public/logo.svg"
     },
