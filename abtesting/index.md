@@ -52,7 +52,7 @@ If you still see same version, clear local storage or open new browser instance 
 </Feature> -->
 
 ## Setup docs.json
-```json docs.json [descHead="Tip" desc="Check out how to setup different [A/B testing providers](https://docs.xyd.dev/docs/guides/integrations/abtesting/overview)."]
+```json docs.json [descHead="Tip" desc="Check out how to setup different [A/B testing providers](https://xyd.dev/docs/guides/integrations/abtesting/abtesting-integrations)."]
 {
     "abtesting": {
         "providers": {
