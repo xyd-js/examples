@@ -4,4 +4,4 @@
 
 | Feature | Description |
 |---------|-------------|
-| [A/B Testing](https://docs.xyd.dev/docs/guides/integrations/abtesting/overview) | Configure a/b testing |
+| [A/B Testing](https://xyd.dev/docs/guides/integrations/abtesting/abtesting-integrations) | Configure a/b testing |
