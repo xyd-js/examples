@@ -2,14 +2,3 @@
   command = "bunx xyd-js build"
   publish = ".xyd/build/client"
   
-[[redirects]]
-  from = "/"
-  to = "/my-base/docs/overview"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/index.html"
-  to = "/my-base/docs/overview"
-  status = 301
-  force = true
