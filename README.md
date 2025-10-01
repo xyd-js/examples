@@ -7,7 +7,7 @@
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://github.com/livesession/xyd">Github</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-  <a href="https://xyd-docs.slack.com">Slack</a>
+  <a href="https://join.slack.com/t/xyd-docs/shared_invite/zt-3brqammx1-qVPwQ8~gYFgocioExxHA2A">Slack</a>
 </div>
 
 <hr>
