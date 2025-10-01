@@ -1,0 +1,11 @@
+{
+  "name": "@xyd-js/examples/mcp/v0-sdk",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Example xyd MCP server for v0-sdk",
+  "scripts": {
+    "xyd:mcp": "bunx @xyd-js/mcp-server ./openapi.json",
+    "mcp:inspector": "bunx @modelcontextprotocol/inspector http://localhost:3000/mcp"
+  }
+}
