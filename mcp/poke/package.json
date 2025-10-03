@@ -1,0 +1,11 @@
+{
+  "name": "@xyd-js/examples/mcp/poke",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Example xyd MCP server for poke API",
+  "scripts": {
+    "mcp:run": "bunx @xyd-js/mcp-server https://raw.githubusercontent.com/PokeAPI/pokeapi/refs/heads/master/openapi.yml",
+    "mcp:inspector": "bunx @modelcontextprotocol/inspector http://localhost:3000/mcp"
+  }
+}
