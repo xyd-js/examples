@@ -1,0 +1,7 @@
+{
+  "name": "ask-ai-widget",
+  "private": true,
+  "scripts": {
+    "start": "bunx @xyd-js/ask-ai-widget"
+  }
+}
