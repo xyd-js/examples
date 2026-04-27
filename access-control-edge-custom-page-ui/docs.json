@@ -1,0 +1,74 @@
+{
+  "theme": {
+    "name": "poetry",
+    "appearance": {
+      "colorScheme": "light"
+    }
+  },
+  "accessControl": {
+    "provider": {
+      "type": "jwt",
+      "loginUrl": "http://localhost:4000/login",
+      "callbackPath": "/auth/jwt-callback",
+      "algorithm": "HS256",
+      "secret": "$AUTH_SECRET",
+      "groupsClaim": "groups"
+    },
+    "defaultAccess": "public",
+    "rules": [
+      { "match": "/protected/**", "access": "protected" },
+      { "match": "/admin/**", "access": "protected", "groups": ["admin"] }
+    ],
+    "login": "./custom-login.tsx",
+    "deploy": {
+      "platform": "node-edge"
+    },
+    "session": {
+      "maxAge": 86400,
+      "cookieName": "xyd-auth-token"
+    }
+  },
+  "navigation": {
+    "sidebar": [
+      {
+        "route": "guides",
+        "pages": [
+          {
+            "group": "Public Pages",
+            "pages": [
+              "guides/welcome",
+              "guides/getting-started",
+              "guides/faq"
+            ]
+          }
+        ]
+      },
+      {
+        "route": "protected",
+        "pages": [
+          {
+            "group": "Protected Pages",
+            "icon": "lock",
+            "pages": [
+              "protected/api-reference",
+              "protected/internal-guide"
+            ]
+          }
+        ]
+      },
+      {
+        "route": "admin",
+        "pages": [
+          {
+            "group": "Admin Pages",
+            "icon": "shield",
+            "pages": [
+              "admin/dashboard",
+              "admin/user-management"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
