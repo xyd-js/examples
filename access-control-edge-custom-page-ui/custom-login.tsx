@@ -8,7 +8,9 @@
  * Just use useAccessControl() — no manual setup needed.
  */
 import React from "react";
-import { useAccessControl } from "@xyd-js/plugin-access-control/AccessControlContext";
+import { useAccessControl } from "@xyd-js/client-api";
+import type {MetaTags} from "@xyd-js/client-api";
+
 import "./custom-login.css";
 
 export default function CustomLoginUI() {
@@ -75,4 +77,12 @@ export default function CustomLoginUI() {
       </div>
     </div>
   );
+}
+
+// PageApi: SEO meta tags for this page
+export function seoTags(): MetaTags {
+  return {
+    description: "Sign in to access protected custom login documentation",
+    "og:title": "Sign In",
+  };
 }

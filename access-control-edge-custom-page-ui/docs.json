@@ -8,7 +8,7 @@
   "accessControl": {
     "provider": {
       "type": "jwt",
-      "loginUrl": "http://localhost:4000/login",
+      "loginUrl": "/login",
       "callbackPath": "/auth/jwt-callback",
       "algorithm": "HS256",
       "secret": "$AUTH_SECRET",
