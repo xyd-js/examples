@@ -1,6 +1,6 @@
-p# Access Control — Edge Server Example
+# Access Control — Edge Password Example
 
-Demonstrates xyd access control with a **Node.js edge server** and **external auth provider**. Runs 100% locally.
+Demonstrates xyd access control with a **Node.js edge server** and **password-based authentication**. All pages are protected by default. Runs 100% locally.
 
 ## Architecture
 
@@ -10,7 +10,7 @@ Browser ──→ Edge Server (port 3000) ──→ Static Files
                │ JWT verify + access map
                │
                └──→ Auth Server (port 4000)
-                      │ Sign in form
+                      │ Password form
                       │ Issues signed JWT
                       └──→ Redirect back with token
 ```
@@ -18,8 +18,8 @@ Browser ──→ Edge Server (port 3000) ──→ Static Files
 ## Quick Start
 
 ```bash
-# 1. Install deps
-pnpm install
+# 1. Install xyd CLI
+bun add -g xyd-js
 
 # 2. Build the static site (generates server.mjs automatically)
 xyd build
@@ -35,13 +35,17 @@ AUTH_SECRET=playground-test-secret-key-at-least-32-chars node .xyd/build/client/
 
 ## Auth Flow
 
-1. User visits `/protected/api-reference`
-2. Edge server checks cookie → no token → **302** redirect to `http://localhost:4000/login`
-3. Auth server shows login form
-4. User enters `user@test.com` / `password`
-5. Auth server signs a JWT with HS256 and redirects to `http://localhost:3000/auth/jwt-callback?token=SIGNED_JWT&redirect=/protected/api-reference`
-6. Edge server validates JWT signature → sets cookie → **302** to the protected page
+1. User visits any protected page
+2. Edge server checks cookie → no token → **302** redirect to `/login`
+3. Login page shows "Enter password" form
+4. User enters credentials
+5. Auth server signs a JWT and redirects back with token
+6. Edge server validates JWT signature → sets cookie → **302** to the page
 7. User sees the content
+
+## Key Difference
+
+Unlike the JWT example, this example uses `"defaultAccess": "protected"` — **all pages are locked by default**, and only `/guides/**` is explicitly made public via rules.
 
 ## Test Accounts
 
@@ -57,19 +61,6 @@ AUTH_SECRET=playground-test-secret-key-at-least-32-chars node .xyd/build/client/
 - Protected pages return **302 redirect** (even for `curl`) — content is never served to unauthorized users
 - `/auth/test-login` is disabled in production (`NODE_ENV=production`)
 
-## Verify with curl
-
-```bash
-# Public page → 200
-curl -o /dev/null -w "%{http_code}" http://localhost:3000/guides/welcome
-
-# Protected page → 302 redirect
-curl -o /dev/null -w "%{http_code}" http://localhost:3000/protected/api-reference
-
-# Admin page → 302 redirect
-curl -o /dev/null -w "%{http_code}" http://localhost:3000/admin/dashboard
-```
-
 ## Configuration
 
 ### `docs.json`
@@ -83,8 +74,12 @@ curl -o /dev/null -w "%{http_code}" http://localhost:3000/admin/dashboard
       "algorithm": "HS256",
       "secret": "$AUTH_SECRET"
     },
-    "edge": {
-      "platform": "node"
+    "defaultAccess": "protected",
+    "rules": [
+      { "match": "/guides/**", "access": "public" }
+    ],
+    "deploy": {
+      "platform": "node-edge"
     }
   }
 }
@@ -101,4 +96,4 @@ curl -o /dev/null -w "%{http_code}" http://localhost:3000/admin/dashboard
 
 ## Production
 
-In production, replace `auth-server.mjs` with your real auth provider (Auth0, Supabase, etc.) and set `loginUrl` to its URL. The generated `server.mjs` is ready for deployment.
+In production, replace `auth-server.mjs` with your real auth provider and set `loginUrl` to its URL. The generated `server.mjs` is ready for deployment.

@@ -1,6 +1,6 @@
-p# Access Control — Edge Server Example
+# Access Control — Edge OAuth Example
 
-Demonstrates xyd access control with a **Node.js edge server** and **external auth provider**. Runs 100% locally.
+Demonstrates xyd access control with a **Node.js edge server** and **OAuth provider**. Runs 100% locally.
 
 ## Architecture
 
@@ -9,23 +9,23 @@ Browser ──→ Edge Server (port 3000) ──→ Static Files
                │                          (.xyd/build/client/)
                │ JWT verify + access map
                │
-               └──→ Auth Server (port 4000)
-                      │ Sign in form
-                      │ Issues signed JWT
-                      └──→ Redirect back with token
+               └──→ OAuth Server (port 4000)
+                      │ Authorization + token endpoints
+                      │ Issues access tokens
+                      └──→ Redirect back with code
 ```
 
 ## Quick Start
 
 ```bash
-# 1. Install deps
-pnpm install
+# 1. Install xyd CLI
+bun add -g xyd-js
 
 # 2. Build the static site (generates server.mjs automatically)
 xyd build
 
-# 3. Start the auth server (external auth provider)
-AUTH_SECRET=playground-test-secret-key-at-least-32-chars node auth-server.mjs &
+# 3. Start the mock OAuth server
+node auth-server.mjs &
 
 # 4. Start the edge server (serves docs + enforces access)
 AUTH_SECRET=playground-test-secret-key-at-least-32-chars node .xyd/build/client/server.mjs
@@ -36,11 +36,11 @@ AUTH_SECRET=playground-test-secret-key-at-least-32-chars node .xyd/build/client/
 ## Auth Flow
 
 1. User visits `/protected/api-reference`
-2. Edge server checks cookie → no token → **302** redirect to `http://localhost:4000/login`
-3. Auth server shows login form
-4. User enters `user@test.com` / `password`
-5. Auth server signs a JWT with HS256 and redirects to `http://localhost:3000/auth/jwt-callback?token=SIGNED_JWT&redirect=/protected/api-reference`
-6. Edge server validates JWT signature → sets cookie → **302** to the protected page
+2. Edge server checks cookie → no token → **302** redirect to `/login`
+3. Login page redirects to OAuth authorization URL
+4. User authorizes the app
+5. OAuth server redirects to `/auth/callback?code=CODE&state=/protected/api-reference`
+6. Client exchanges code for token, stores in cookie
 7. User sees the content
 
 ## Test Accounts
@@ -52,23 +52,9 @@ AUTH_SECRET=playground-test-secret-key-at-least-32-chars node .xyd/build/client/
 
 ## Security
 
-- JWTs are signed with **HMAC-SHA256** using `AUTH_SECRET`
-- Edge server **verifies the signature** on every request — tampered tokens are rejected
-- Protected pages return **302 redirect** (even for `curl`) — content is never served to unauthorized users
+- Edge server **verifies JWT signatures** on every request
+- Protected pages return **302 redirect** — content is never served to unauthorized users
 - `/auth/test-login` is disabled in production (`NODE_ENV=production`)
-
-## Verify with curl
-
-```bash
-# Public page → 200
-curl -o /dev/null -w "%{http_code}" http://localhost:3000/guides/welcome
-
-# Protected page → 302 redirect
-curl -o /dev/null -w "%{http_code}" http://localhost:3000/protected/api-reference
-
-# Admin page → 302 redirect
-curl -o /dev/null -w "%{http_code}" http://localhost:3000/admin/dashboard
-```
 
 ## Configuration
 
@@ -78,13 +64,14 @@ curl -o /dev/null -w "%{http_code}" http://localhost:3000/admin/dashboard
 {
   "accessControl": {
     "provider": {
-      "type": "jwt",
-      "loginUrl": "http://localhost:4000/login",
-      "algorithm": "HS256",
-      "secret": "$AUTH_SECRET"
+      "type": "oauth",
+      "authorizationUrl": "http://localhost:4000/authorize",
+      "tokenUrl": "http://localhost:4000/token",
+      "clientId": "mock-client-id",
+      "callbackPath": "/auth/callback"
     },
-    "edge": {
-      "platform": "node"
+    "deploy": {
+      "platform": "node-edge"
     }
   }
 }
@@ -96,9 +83,8 @@ curl -o /dev/null -w "%{http_code}" http://localhost:3000/admin/dashboard
 |----------|----------|-------------|
 | `AUTH_SECRET` | Yes | JWT signing secret (≥32 chars) |
 | `PORT` | No | Edge server port (default: 3000) |
-| `DOCS_ORIGIN` | No | Docs server URL for auth server redirects (default: http://localhost:3000) |
 | `NODE_ENV` | No | Set to `production` to disable `/auth/test-login` |
 
 ## Production
 
-In production, replace `auth-server.mjs` with your real auth provider (Auth0, Supabase, etc.) and set `loginUrl` to its URL. The generated `server.mjs` is ready for deployment.
+In production, replace `auth-server.mjs` with your real OAuth provider (Auth0, Okta, etc.) and update `authorizationUrl`, `tokenUrl`, and `clientId`. The generated `server.mjs` is ready for deployment.

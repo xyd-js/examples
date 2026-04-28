@@ -1,6 +1,6 @@
-p# Access Control — Edge Server Example
+# Access Control — Edge JWT Example
 
-Demonstrates xyd access control with a **Node.js edge server** and **external auth provider**. Runs 100% locally.
+Demonstrates xyd access control with a **Node.js edge server** and **external JWT auth provider**. Runs 100% locally.
 
 ## Architecture
 
@@ -18,8 +18,8 @@ Browser ──→ Edge Server (port 3000) ──→ Static Files
 ## Quick Start
 
 ```bash
-# 1. Install deps
-pnpm install
+# 1. Install xyd CLI
+bun add -g xyd-js
 
 # 2. Build the static site (generates server.mjs automatically)
 xyd build
@@ -36,8 +36,8 @@ AUTH_SECRET=playground-test-secret-key-at-least-32-chars node .xyd/build/client/
 ## Auth Flow
 
 1. User visits `/protected/api-reference`
-2. Edge server checks cookie → no token → **302** redirect to `http://localhost:4000/login`
-3. Auth server shows login form
+2. Edge server checks cookie → no token → **302** redirect to `/login`
+3. Login page redirects to `http://localhost:4000/login`
 4. User enters `user@test.com` / `password`
 5. Auth server signs a JWT with HS256 and redirects to `http://localhost:3000/auth/jwt-callback?token=SIGNED_JWT&redirect=/protected/api-reference`
 6. Edge server validates JWT signature → sets cookie → **302** to the protected page
@@ -83,8 +83,8 @@ curl -o /dev/null -w "%{http_code}" http://localhost:3000/admin/dashboard
       "algorithm": "HS256",
       "secret": "$AUTH_SECRET"
     },
-    "edge": {
-      "platform": "node"
+    "deploy": {
+      "platform": "node-edge"
     }
   }
 }
