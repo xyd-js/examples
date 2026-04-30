@@ -28,7 +28,7 @@ xyd build
 AUTH_SECRET=playground-test-secret-key-at-least-32-chars node auth-server.mjs &
 
 # 4. Start the edge server (serves docs + enforces access)
-AUTH_SECRET=playground-test-secret-key-at-least-32-chars node .xyd/build/client/server.mjs
+AUTH_SECRET=playground-test-secret-key-at-least-32-chars xyd serve
 
 # 5. Open http://localhost:3000
 ```
