@@ -1,0 +1,17 @@
+{
+    "theme": {
+        "name": "poetry"
+    },
+    "advanced": {
+        "vite": {
+            "server": {
+                "allowedHosts": ["my-remote-env.example.com"]
+            }
+        }
+    },
+    "navigation": {
+        "sidebar": [
+            "introduction"
+        ]
+    }
+}
