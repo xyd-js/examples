@@ -1,0 +1,55 @@
+{
+    "theme": {
+        "name": "cosmo"
+    },
+    "navigation": {
+        "languages": [
+            {
+                "language": "en",
+                "name": "English",
+                "default": true,
+                "sidebar": [
+                    {
+                        "group": "Get Started",
+                        "pages": [
+                            "introduction",
+                            "quickstart"
+                        ]
+                    }
+                ]
+            },
+            {
+                "language": "pl",
+                "name": "Polski",
+                "sidebar": [
+                    {
+                        "group": "Wprowadzenie",
+                        "pages": [
+                            "introduction",
+                            "quickstart"
+                        ]
+                    }
+                ]
+            },
+            {
+                "language": "de",
+                "name": "Deutsch",
+                "sidebar": [
+                    {
+                        "group": "Erste Schritte",
+                        "pages": [
+                            "introduction",
+                            "quickstart"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "redirects": [
+        {
+            "source": "index",
+            "destination": "introduction"
+        }
+    ]
+}

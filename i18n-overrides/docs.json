@@ -1,0 +1,92 @@
+{
+    "theme": {
+        "name": "cosmo"
+    },
+    "components": {
+        "footer": {
+            "footnote": {
+                "component": "a",
+                "props": {
+                    "href": "https://livesession.io",
+                    "target": "_blank",
+                    "children": "Powered by LiveSession"
+                }
+            }
+        }
+    },
+    "navigation": {
+        "languages": [
+            {
+                "language": "en",
+                "name": "English",
+                "default": true,
+                "sidebar": [
+                    {
+                        "group": "Get Started",
+                        "pages": [
+                            "introduction"
+                        ]
+                    }
+                ]
+            },
+            {
+                "language": "pl",
+                "name": "Polski",
+                "sidebar": [
+                    {
+                        "group": "Wprowadzenie",
+                        "pages": [
+                            "introduction"
+                        ]
+                    }
+                ],
+                "overrides": {
+                    "components": {
+                        "footer": {
+                            "footnote": {
+                                "component": "a",
+                                "props": {
+                                    "href": "https://livesession.io",
+                                    "target": "_blank",
+                                    "children": "Wspierane przez LiveSession"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "language": "de",
+                "name": "Deutsch",
+                "sidebar": [
+                    {
+                        "group": "Erste Schritte",
+                        "pages": [
+                            "introduction"
+                        ]
+                    }
+                ],
+                "overrides": {
+                    "components": {
+                        "footer": {
+                            "footnote": {
+                                "component": "a",
+                                "props": {
+                                    "href": "https://livesession.io",
+                                    "target": "_blank",
+                                    "children": "Unterstützt von LiveSession"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "redirects": [
+        {
+            "source": "index",
+            "destination": "introduction"
+        }
+    ]
+}
