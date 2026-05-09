@@ -41,3 +41,10 @@ Then visit:
 - http://localhost:5175/de/introduction (German)
 
 Missing translations 404 — there is no fallback to the default locale.
+
+## See also
+
+- [`../i18n-catalogs`](../i18n-catalogs) — same site with the sidebar declared once at top level and `"i18n: <key>"` references resolved against per-locale catalogs (~⅓ the config of this example).
+- [`../i18n-overrides`](../i18n-overrides) — per-locale settings overrides (footer, theme, etc.) via `navigation.languages[].overrides`.
+- [`../i18n-overrides-flat`](../i18n-overrides-flat) — same overrides example using flat dot-key syntax.
+- [`../i18n-catalog-overrides`](../i18n-catalog-overrides) — colocate translations and per-locale settings paths in one catalog file via `$`-prefixed keys.
