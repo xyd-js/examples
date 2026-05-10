@@ -1,0 +1,31 @@
+{
+    "theme": {
+        "name": "cosmo"
+    },
+    "i18n": {
+        "catalogs": {
+            "en": "./locales/english.json",
+            "pl": "./tlumaczenia/polski.json",
+            "de": "./uebersetzungen/deutsch.json"
+        }
+    },
+    "navigation": {
+        "languages": [
+            { "language": "en", "name": "English", "default": true },
+            { "language": "pl", "name": "Polski" },
+            { "language": "de", "name": "Deutsch" }
+        ],
+        "sidebar": [
+            {
+                "group": "i18n: sidebar.getstarted",
+                "pages": ["introduction"]
+            }
+        ]
+    },
+    "redirects": [
+        {
+            "source": "index",
+            "destination": "introduction"
+        }
+    ]
+}
