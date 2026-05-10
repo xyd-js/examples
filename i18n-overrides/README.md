@@ -53,4 +53,5 @@ Visit each locale and check the footer at the bottom of the page — the footnot
 - [`../i18n-overrides-flat`](../i18n-overrides-flat) — same example using flat dot-key overrides.
 - [`../i18n-catalog-overrides`](../i18n-catalog-overrides) — same effect, with `$`-prefixed paths in the catalog file (no `overrides` block in `docs.json`).
 - [`../i18n-catalogs`](../i18n-catalogs) — catalog-only navigation with `"i18n: <key>"` references.
+- [`../i18n-catalogs-custom-paths`](../i18n-catalogs-custom-paths) — catalog-only navigation with explicit `i18n.catalogs` file paths.
 - [`../i18n`](../i18n) — basic three-locale setup with per-locale sidebars.

@@ -57,3 +57,4 @@ Visit each locale and inspect the footer link — both the text and the `href` c
 - [`../i18n-overrides`](../i18n-overrides) — same effect via `navigation.languages[].overrides` (nested form).
 - [`../i18n-overrides-flat`](../i18n-overrides-flat) — same overrides in flat dot-key form.
 - [`../i18n-catalogs`](../i18n-catalogs) — catalog-only navigation without `$`-key overrides.
+- [`../i18n-catalogs-custom-paths`](../i18n-catalogs-custom-paths) — catalog-only navigation with explicit `i18n.catalogs` file paths.

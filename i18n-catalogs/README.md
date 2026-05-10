@@ -48,6 +48,7 @@ Visit each locale and watch the sidebar group title change while the structure s
 ## See also
 
 - [`../i18n`](../i18n) — same site, but each locale declares its own sidebar.
+- [`../i18n-catalogs-custom-paths`](../i18n-catalogs-custom-paths) — same setup with explicit catalog file paths instead of convention-based discovery.
 - [`../i18n-overrides`](../i18n-overrides) — per-locale settings overrides via `navigation.languages[].overrides`.
 - [`../i18n-overrides-flat`](../i18n-overrides-flat) — same overrides example using flat dot-key syntax.
 - [`../i18n-catalog-overrides`](../i18n-catalog-overrides) — combine catalog translations with `$`-prefixed override keys.

@@ -35,3 +35,5 @@ xyd
 
 - [`../i18n-overrides`](../i18n-overrides) — same example using the nested form.
 - [`../i18n-catalog-overrides`](../i18n-catalog-overrides) — same effect, but the dot-key paths live in the catalog file (with `$` prefix) instead of `docs.json`.
+- [`../i18n-catalogs`](../i18n-catalogs) — catalog-only navigation with convention-based catalogs.
+- [`../i18n-catalogs-custom-paths`](../i18n-catalogs-custom-paths) — catalog-only navigation with explicit `i18n.catalogs` file paths.
