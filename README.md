@@ -3,6 +3,8 @@
 <div align="center">
   <h1>Examples</h1>
   <p><h3 align="center">Ready-to-run xyd examples 🚀</h3></p>
+  <a href="https://www.examples.xyd.dev/">Examples</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://www.xyd.dev/">Website</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://github.com/livesession/xyd">Github</a>
