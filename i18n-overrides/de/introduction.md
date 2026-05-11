@@ -6,6 +6,6 @@ icon: rocket
 
 # Sprachüberschreibungen
 
-Dieses Beispiel zeigt, wie `navigation.languages[].overrides` die Fußnote pro Sprache durch eine übersetzte Variante austauscht.
+Dieses Beispiel zeigt, wie `navigation.languages[].overrides` das Banner pro Sprache durch eine übersetzte Variante austauscht.
 
-Scrollen Sie an das Ende der Seite — der Fußnotentext wechselt zwischen Englisch, Polnisch und Deutsch.
+Schauen Sie auf das Banner oben auf der Seite — der Inhalt wechselt zwischen Englisch, Polnisch und Deutsch.

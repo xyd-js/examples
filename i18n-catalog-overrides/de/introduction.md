@@ -8,4 +8,4 @@ icon: rocket
 
 Dieses Beispiel hält **Übersetzungen** und **sprachspezifische Einstellungs-Overrides** in derselben Katalogdatei. Schlüssel mit `$`-Präfix sind keine Übersetzungsschlüssel — sie sind Einstellungs-Override-Pfade, die auf den `overrides` des passenden Spracheintrags angewendet werden.
 
-Scrollen Sie zum Footer und wechseln Sie die Sprache — sowohl der Link-Text als auch die URL ändern sich pro Sprache, ohne `overrides`-Block in `docs.json`.
+Wechseln Sie die Sprache und prüfen Sie das Banner oben auf der Seite — der Inhalt ändert sich pro Sprache, ohne `overrides`-Block in `docs.json`.
