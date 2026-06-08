@@ -10,10 +10,10 @@ Dieselbe Konfiguration wie `../i18n-overrides`, aber jeder `overrides`-Block ver
 
 ```json
 "overrides": {
-  "components.footer.footnote.props.children": "Unterstützt von LiveSession"
+  "components.banner.content": "**xyd 0.1.0-beta** — Bald verfügbar"
 }
 ```
 
 `applyOverrides` akzeptiert beide Formen. Diesen Stil verwenden Sie, wenn Sie eine einzelne tiefe Eigenschaft ändern; die verschachtelte Form ist praktischer, wenn Sie mehrere Felder gleichzeitig ändern.
 
-Scrollen Sie an das Ende der Seite — der Fußnotentext wechselt zwischen Englisch, Polnisch und Deutsch, genau wie im Beispiel mit verschachtelter Form.
+Schauen Sie auf das Banner oben auf der Seite — der Inhalt wechselt zwischen Englisch, Polnisch und Deutsch, genau wie im Beispiel mit verschachtelter Form.

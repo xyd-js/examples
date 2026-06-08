@@ -10,13 +10,13 @@ For each locale you get:
 - Translation strings (regular keys, used by `"i18n: <key>"` references in settings).
 - Settings overrides (`$`-prefixed keys, used to swap `components`, `theme`, etc. per locale).
 
-When translated link text and the link's URL naturally live next to each other, this is cleaner than splitting them across catalog + `overrides` field.
+When translated text and locale-specific UI fields naturally live next to each other, this is cleaner than splitting them across catalog + `overrides` field.
 
 ## File layout
 
 ```
 i18n-catalog-overrides/
-├── docs.json              # default footer footnote, no per-locale overrides block
+├── docs.json              # default banner, no per-locale overrides block
 ├── i18n/
 │   ├── en.json            # translation keys only
 │   ├── pl.json            # translation keys + $-prefixed override paths
@@ -31,18 +31,18 @@ i18n-catalog-overrides/
 ```json
 {
   "sidebar.getstarted": "Zaczynamy",
-  "$components.footer.footnote.props.children": "Wspierane przez LiveSession",
-  "$components.footer.footnote.props.href": "https://pl.livesession.io"
+  "$components.banner.content": "**xyd 0.1.0-beta** — już wkrótce",
+  "$components.banner.icon": "rocket"
 }
 ```
 
 ## URLs
 
-| Locale  | Path                | Footer footnote                | Footer href                    |
-|---------|---------------------|--------------------------------|--------------------------------|
-| English | `/introduction`     | Powered by LiveSession         | https://livesession.io         |
-| Polish  | `/pl/introduction`  | Wspierane przez LiveSession    | https://pl.livesession.io      |
-| German  | `/de/introduction`  | Unterstützt von LiveSession    | https://de.livesession.io      |
+| Locale  | Path                | Banner content                          | Icon       |
+|---------|---------------------|-----------------------------------------|------------|
+| English | `/introduction`     | xyd 0.1.0-beta — Coming Soon            | `sparkles` |
+| Polish  | `/pl/introduction`  | xyd 0.1.0-beta — już wkrótce            | `rocket`   |
+| German  | `/de/introduction`  | xyd 0.1.0-beta — Bald verfügbar         | `sparkles` |
 
 ## Run
 
@@ -50,7 +50,7 @@ i18n-catalog-overrides/
 xyd
 ```
 
-Visit each locale and inspect the footer link — both the text and the `href` change per locale.
+Visit each locale and inspect the banner at the top — both the content and (for Polish) the icon change per locale.
 
 ## See also
 

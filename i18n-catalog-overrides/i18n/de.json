@@ -1,5 +1,4 @@
 {
   "sidebar.getstarted": "Erste Schritte",
-  "$components.footer.footnote.props.children": "Unterstützt von LiveSession",
-  "$components.footer.footnote.props.href": "https://de.livesession.io"
+  "$components.banner.content": "**xyd 0.1.0-beta** — Bald verfügbar"
 }

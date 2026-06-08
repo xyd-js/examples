@@ -6,6 +6,6 @@ icon: rocket
 
 # Per-locale overrides
 
-This example shows how `navigation.languages[].overrides` swaps in a translated footer footnote per locale.
+This example shows how `navigation.languages[].overrides` swaps in a translated banner per locale.
 
-Scroll to the bottom of the page — the footnote text changes between English, Polish, and German.
+Check the banner at the top of the page — the content changes between English, Polish, and German, and the Polish version also swaps the icon.

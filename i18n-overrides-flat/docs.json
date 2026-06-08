@@ -3,15 +3,9 @@
         "name": "cosmo"
     },
     "components": {
-        "footer": {
-            "footnote": {
-                "component": "a",
-                "props": {
-                    "href": "https://livesession.io",
-                    "target": "_blank",
-                    "children": "Powered by LiveSession"
-                }
-            }
+        "banner": {
+            "content": "**xyd 0.1.0-beta** — Coming Soon",
+            "icon": "sparkles"
         }
     },
     "navigation": {
@@ -37,7 +31,8 @@
                     }
                 ],
                 "overrides": {
-                    "components.footer.footnote.props.children": "Wspierane przez LiveSession"
+                    "components.banner.content": "**xyd 0.1.0-beta** — już wkrótce",
+                    "components.banner.icon": "rocket"
                 }
             },
             {
@@ -50,7 +45,7 @@
                     }
                 ],
                 "overrides": {
-                    "components.footer.footnote.props.children": "Unterstützt von LiveSession"
+                    "components.banner.content": "**xyd 0.1.0-beta** — Bald verfügbar"
                 }
             }
         ]

@@ -8,22 +8,22 @@ Same setup as [`../i18n-overrides`](../i18n-overrides), but per-locale overrides
 
 - **Nested objects** — `Partial<Settings>` form, e.g.
   ```json
-  { "components": { "footer": { "footnote": { "props": { "children": "..." } } } } }
+  { "components": { "banner": { "content": "..." } } }
   ```
 - **Flat dot-keys** — single-key path form (this example), e.g.
   ```json
-  { "components.footer.footnote.props.children": "..." }
+  { "components.banner.content": "..." }
   ```
 
 Both end up in the same merged settings at request time. Flat dot-keys are recommended when you're changing one deep property; nested form is cleaner when you're changing multiple fields at once.
 
 ## URLs
 
-| Locale  | Path                | Footer footnote                  |
-|---------|---------------------|----------------------------------|
-| English | `/introduction`     | Powered by LiveSession           |
-| Polish  | `/pl/introduction`  | Wspierane przez LiveSession      |
-| German  | `/de/introduction`  | Unterstützt von LiveSession      |
+| Locale  | Path                | Banner content                          |
+|---------|---------------------|-----------------------------------------|
+| English | `/introduction`     | xyd 0.1.0-beta — Coming Soon            |
+| Polish  | `/pl/introduction`  | xyd 0.1.0-beta — już wkrótce            |
+| German  | `/de/introduction`  | xyd 0.1.0-beta — Bald verfügbar         |
 
 ## Run
 
