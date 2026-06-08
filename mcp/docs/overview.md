@@ -5,30 +5,48 @@ title: MCP Server Docs
 # MCP Server Docs
 
 :::subtitle
-Generate browsable API reference for any MCP (Model Context Protocol) server directly from its `tools/list` and `resources/list` endpoints.
+Generate browsable API reference for any MCP (Model Context Protocol) server — directly from its `tools/list` and `resources/list`.
 :::
 
-Point xyd at the URL of a remote MCP server and it will render one page per
-tool (with the tool's `inputSchema` expanded into a property tree) and one
-page per resource, alongside any manually-authored content.
+This example renders MCP docs from a **local manifest** (`mcp.json`)
+shaped like the combined output of `tools/list` + `resources/list`. The
+exact same config also accepts a remote MCP server URL.
 
-## How it works
+## Two source modes
 
-```mermaid
-graph LR
-  CFG["docs.json (api.mcp)"] --> XYD["xyd build"]
-  XYD -->|JSON-RPC| MCP["MCP server"]
-  MCP -->|tools/list + resources/list| REF["Reference[] (uniform)"]
-  REF --> PAGE["one page per tool / resource"]
-```
-
-## Configuration
+### 1. Local manifest (this example)
 
 ```jsonc
 {
   "api": {
     "mcp": {
-      "source": "$MCP_URL",
+      "source": "./mcp.json",
+      "route": "docs/api/mcp"
+    }
+  }
+}
+```
+
+`mcp.json`:
+
+```jsonc
+{
+  "serverUrl": "https://demo.xyd.dev/mcp",
+  "tools": [ /* ... tools/list result ... */ ],
+  "resources": [ /* ... resources/list result ... */ ]
+}
+```
+
+Use this when you want deterministic, static docs — e.g. you want to ship
+the docs even when the server is offline.
+
+### 2. Remote URL
+
+```jsonc
+{
+  "api": {
+    "mcp": {
+      "source": "https://my-mcp-server.example.com/mcp",
       "route": "docs/api/mcp",
       "info": { "token": "$MCP_TOKEN" }
     }
@@ -36,22 +54,18 @@ graph LR
 }
 ```
 
-| Field | Purpose |
-|-------|---------|
-| `source` | MCP server URL (http / https / sse) |
-| `route` | Sidebar route prefix the generated pages nest under |
-| `info.token` | Bearer token sent as `Authorization: Bearer <token>`; supports `$ENV_VAR` |
-| `info.headers` | Additional request headers (e.g. tenant, custom keys) |
+xyd calls `tools/list` and `resources/list` over JSON-RPC at build time.
+`$MCP_TOKEN` is sent as `Authorization: Bearer …`.
 
-## Running this example
+## What gets generated
 
-```bash
-export MCP_URL="https://your-mcp-server.example.com/mcp"
-export MCP_TOKEN="$YOUR_TOKEN"   # optional
+Each MCP tool becomes its own page with the tool's `inputSchema` (JSON
+Schema) expanded into a typed property tree — required fields, nested
+objects, arrays, enums, defaults, all rendered with the same Atlas
+components used by the OpenAPI and GraphQL converters.
 
-xyd build
-```
+Each resource becomes its own page showing the `uri` and `mimeType`.
 
-The example expects `MCP_URL` to point at a reachable MCP server speaking
-the standard JSON-RPC methods `tools/list` and `resources/list`. If it's
-unset the API tab will be empty — the rest of the site still builds.
+Browse the **MCP Reference** tab above to see this example's three tools
+(`search_docs`, `create_issue`, `ping`) and two resources (`README`,
+`CHANGELOG`).
