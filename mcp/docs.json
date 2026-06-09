@@ -1,0 +1,44 @@
+{
+    "theme": {
+        "name": "gusto",
+        "logo": {
+            "light": "/public/logo.svg",
+            "dark": "/public/logo.svg",
+            "page": "docs"
+        },
+        "favicon": "/public/logo.svg"
+    },
+    "navigation": {
+        "tabs": [
+            { "title": "Docs", "page": "docs" },
+            { "title": "MCP Reference", "page": "docs/api/mcp" }
+        ],
+        "sidebar": [
+            {
+                "route": "docs",
+                "pages": [
+                    {
+                        "group": "Get Started",
+                        "pages": ["docs/overview"]
+                    }
+                ]
+            },
+            {
+                "route": "docs/api/mcp",
+                "pages": [
+                    {
+                        "group": "API & Reference",
+                        "order": 0,
+                        "pages": ["docs/api/mcp/introduction"]
+                    }
+                ]
+            }
+        ]
+    },
+    "api": {
+        "mcp": {
+            "source": "./mcp.json",
+            "route": "docs/api/mcp"
+        }
+    }
+}

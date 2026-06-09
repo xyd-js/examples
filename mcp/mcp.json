@@ -1,0 +1,82 @@
+{
+  "serverUrl": "https://demo.xyd.dev/mcp",
+  "tools": [
+    {
+      "name": "search_docs",
+      "description": "Search the documentation index by full-text query and return ranked snippets.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Free-text search query."
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Maximum number of results.",
+            "default": 10,
+            "minimum": 1,
+            "maximum": 50
+          },
+          "filters": {
+            "type": "object",
+            "description": "Optional filters applied to the result set.",
+            "properties": {
+              "tags": {
+                "type": "array",
+                "description": "Tag names to require.",
+                "items": { "type": "string" }
+              },
+              "since": {
+                "type": "string",
+                "description": "ISO timestamp; only return docs modified after this point."
+              }
+            }
+          }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "create_issue",
+      "description": "Create a new issue in the connected tracker.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string", "description": "Issue title." },
+          "body": { "type": "string", "description": "Markdown body." },
+          "labels": {
+            "type": "array",
+            "description": "Labels applied on creation.",
+            "items": { "type": "string" }
+          },
+          "priority": {
+            "type": "string",
+            "description": "Priority level.",
+            "enum": ["low", "medium", "high", "urgent"]
+          }
+        },
+        "required": ["title"]
+      }
+    },
+    {
+      "name": "ping",
+      "description": "Health check — returns the server's current time.",
+      "inputSchema": { "type": "object" }
+    }
+  ],
+  "resources": [
+    {
+      "uri": "doc:///readme",
+      "name": "README",
+      "description": "Top-level project readme served as markdown.",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "doc:///changelog",
+      "name": "CHANGELOG",
+      "description": "Release notes, newest first.",
+      "mimeType": "text/markdown"
+    }
+  ]
+}
