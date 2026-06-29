@@ -1,0 +1,69 @@
+{
+    "theme": {
+        "name": "poetry",
+        "logo": {
+            "light": "/public/logo.svg",
+            "dark": "/public/logo.svg",
+            "page": "docs"
+        },
+        "favicon": "/public/logo.svg"
+    },
+    "integrations": {
+        ".apps": {
+            "githubStar": {
+                "title": "Star",
+                "label": "Show your support! Star us on GitHub ⭐️",
+                "href": "https://github.com/livesession/xyd",
+                "dataIcon": "octicon-star",
+                "dataSize": "large",
+                "dataShowCount": true,
+                "ariaLabel": "Star livesession/xyd on GitHub"
+            }
+        }
+    },
+    "navigation": {
+        "tabs": [
+            {
+                "title": "Docs",
+                "page": "docs"
+            },
+            {
+                "title": "CLI Reference",
+                "page": "docs/cli"
+            }
+        ],
+        "sidebar": [
+            {
+                "route": "docs",
+                "pages": [
+                    {
+                        "group": "Get Started",
+                        "pages": [
+                            "docs/overview"
+                        ]
+                    }
+                ]
+            },
+            {
+                "route": "docs/cli",
+                "pages": [
+                    {
+                        "group": "orbit CLI",
+                        "order": 0,
+                        "pages": [
+                            "docs/cli/overview"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "api": {
+        "cli": [
+            {
+                "source": "./orbit.opencli.json",
+                "route": "docs/cli"
+            }
+        ]
+    }
+}

@@ -1,0 +1,98 @@
+{
+  "opencli": "1.0.0",
+  "info": {
+    "title": "spice",
+    "version": "1.4.0",
+    "description": "A fast, friendly package manager."
+  },
+  "options": [
+    {
+      "name": "verbose",
+      "aliases": ["v"],
+      "description": "Enable verbose output."
+    },
+    {
+      "name": "cwd",
+      "description": "Run as if spice was started in <dir> instead of the current directory.",
+      "arguments": [{ "name": "dir", "required": true }]
+    }
+  ],
+  "commands": [
+    {
+      "name": "install",
+      "aliases": ["i", "add"],
+      "description": "Install one or more packages and add them to the manifest. With no arguments, installs everything declared in the manifest.",
+      "arguments": [
+        {
+          "name": "packages",
+          "required": false,
+          "description": "One or more packages to install."
+        }
+      ],
+      "options": [
+        {
+          "name": "global",
+          "aliases": ["g"],
+          "description": "Install the package(s) globally."
+        },
+        {
+          "name": "save-dev",
+          "aliases": ["D"],
+          "description": "Add the package(s) to devDependencies."
+        },
+        {
+          "name": "exact",
+          "aliases": ["E"],
+          "description": "Pin an exact version instead of a semver range."
+        }
+      ]
+    },
+    {
+      "name": "remove",
+      "aliases": ["rm"],
+      "description": "Remove one or more packages from the manifest.",
+      "arguments": [
+        {
+          "name": "packages",
+          "required": true,
+          "description": "One or more packages to remove."
+        }
+      ]
+    },
+    {
+      "name": "run",
+      "description": "Run a script defined in the manifest.",
+      "arguments": [
+        {
+          "name": "script",
+          "required": true,
+          "description": "Name of the script to run."
+        }
+      ],
+      "options": [
+        {
+          "name": "if-present",
+          "description": "Exit gracefully (status 0) when the script is missing."
+        }
+      ]
+    },
+    {
+      "name": "list",
+      "aliases": ["ls"],
+      "description": "List installed packages.",
+      "options": [
+        {
+          "name": "global",
+          "aliases": ["g"],
+          "description": "List globally installed packages."
+        },
+        {
+          "name": "depth",
+          "description": "Maximum dependency depth to print.",
+          "arguments": [{ "name": "n", "required": true }]
+        }
+      ]
+    }
+  ],
+  "examples": ["spice install", "spice add react --save-dev", "spice run build", "spice list --global"]
+}
