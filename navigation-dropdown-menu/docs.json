@@ -1,0 +1,99 @@
+{
+    "theme": {
+        "name": "opener",
+        "appearance": {
+            "navigationDropdown": {
+                "items": "flush",
+                "chevron": "static"
+            }
+        }
+    },
+    "navigation": {
+        "anchors": {
+            "header": [
+                {
+                    "title": "Products",
+                    "trigger": "hover",
+                    "dropdownMenu": [
+                        {
+                            "title": "Browser SDK",
+                            "dropdownMenu": [
+                                { "title": "Install", "page": "docs/browser/install" },
+                                { "title": "Methods", "page": "docs/browser/methods" },
+                                { "title": "Events", "page": "docs/browser/events" }
+                            ]
+                        },
+                        { "title": "REST API", "page": "docs/rest" },
+                        { "title": "GraphQL", "page": "docs/graphql" }
+                    ]
+                },
+                {
+                    "title": "Company",
+                    "trigger": "click",
+                    "dropdownMenu": [
+                        { "title": "Changelog", "page": "changelog" },
+                        { "title": "GitHub", "href": "https://github.com/livesession/xyd" }
+                    ]
+                }
+            ]
+        },
+        "tabs": [
+            { "title": "Overview", "page": "overview" },
+            { "title": "Browser SDK", "page": "docs/browser" },
+            { "title": "REST API", "page": "docs/rest" },
+            {
+                "title": "API Reference",
+                "trigger": "hover",
+                "dropdownMenu": [
+                    { "title": "Browser SDK", "page": "docs/browser" },
+                    { "title": "REST API", "page": "docs/rest" },
+                    { "title": "GraphQL", "page": "docs/graphql" }
+                ]
+            }
+        ],
+        "sidebar": [
+            "overview",
+            {
+                "route": "docs/browser",
+                "pages": [
+                    {
+                        "group": "Browser SDK",
+                        "pages": [
+                            "docs/browser",
+                            "docs/browser/install",
+                            "docs/browser/methods",
+                            "docs/browser/events"
+                        ]
+                    }
+                ]
+            },
+            {
+                "route": "docs/rest",
+                "pages": [
+                    {
+                        "group": "REST API",
+                        "pages": [
+                            "docs/rest",
+                            "docs/rest/authentication",
+                            "docs/rest/endpoints"
+                        ]
+                    }
+                ]
+            },
+            {
+                "route": "docs/graphql",
+                "pages": [
+                    {
+                        "group": "GraphQL",
+                        "pages": [
+                            "docs/graphql",
+                            "docs/graphql/queries",
+                            "docs/graphql/mutations"
+                        ]
+                    }
+                ]
+            },
+            "changelog"
+        ]
+    }
+}
