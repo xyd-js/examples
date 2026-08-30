@@ -7,3 +7,6 @@
 [submodule "openai-clone"]
 	path = openai-clone
 	url = https://github.com/xyd-js/openai-clone
+[submodule "hashicorp-clone"]
+	path = hashicorp-clone
+	url = https://github.com/xyd-js/hashicorp-clone
