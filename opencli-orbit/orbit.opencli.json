@@ -1,0 +1,88 @@
+{
+  "opencli": "1.0.0",
+  "info": {
+    "title": "orbit",
+    "version": "2.1.0",
+    "description": "Ship and operate apps from the command line."
+  },
+  "options": [
+    {
+      "name": "profile",
+      "description": "Use a named credentials profile.",
+      "arguments": [{ "name": "name", "required": true }]
+    }
+  ],
+  "commands": [
+    {
+      "name": "deploy",
+      "description": "Deploy an app to an environment.",
+      "arguments": [{ "name": "app", "required": true, "description": "The app to deploy." }],
+      "options": [
+        {
+          "name": "env",
+          "aliases": ["e"],
+          "description": "Target environment.",
+          "arguments": [{ "name": "name", "required": true }]
+        },
+        { "name": "force", "aliases": ["f"], "description": "Deploy even if pre-flight checks fail." }
+      ]
+    },
+    {
+      "name": "auth",
+      "description": "Manage authentication.",
+      "commands": [
+        {
+          "name": "login",
+          "description": "Log in to orbit.",
+          "options": [
+            {
+              "name": "token",
+              "description": "Authenticate with an API token instead of the browser.",
+              "arguments": [{ "name": "value", "required": true }]
+            }
+          ]
+        },
+        { "name": "logout", "description": "Log out of orbit." }
+      ]
+    },
+    {
+      "name": "secrets",
+      "description": "Manage app secrets.",
+      "commands": [
+        {
+          "name": "set",
+          "description": "Set a secret.",
+          "arguments": [
+            { "name": "key", "required": true, "description": "Secret name." },
+            { "name": "value", "required": true, "description": "Secret value." }
+          ]
+        },
+        {
+          "name": "list",
+          "aliases": ["ls"],
+          "description": "List secret names.",
+          "options": [{ "name": "json", "description": "Output as JSON." }]
+        },
+        {
+          "name": "remove",
+          "aliases": ["rm"],
+          "description": "Remove a secret.",
+          "arguments": [{ "name": "key", "required": true, "description": "Secret name." }]
+        }
+      ]
+    },
+    {
+      "name": "logs",
+      "description": "Stream an app's logs.",
+      "arguments": [{ "name": "app", "required": true, "description": "The app to read logs from." }],
+      "options": [
+        { "name": "follow", "aliases": ["f"], "description": "Follow log output." },
+        {
+          "name": "tail",
+          "description": "Number of lines to show from the end.",
+          "arguments": [{ "name": "n", "required": true }]
+        }
+      ]
+    }
+  ]
+}
