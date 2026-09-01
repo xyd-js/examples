@@ -1,0 +1,36 @@
+{
+    "name": "Sidebar as ToC",
+    "description": "Sidebar groups with `asToc: true` — their pages compose into one scrollable page and the sidebar becomes its scroll-spy table of contents.",
+    "theme": {
+        "name": "terrarium"
+    },
+    "navigation": {
+        "sidebar": [
+            {
+                "group": "Operating Systems",
+                "asToc": true,
+                "pages": [
+                    "operating-systems/linux",
+                    "operating-systems/windows",
+                    "operating-systems/macos"
+                ]
+            },
+            {
+                "group": "Programming Languages",
+                "asToc": true,
+                "pages": [
+                    "programming-languages/python",
+                    "programming-languages/javascript",
+                    "programming-languages/java"
+                ]
+            },
+            {
+                "group": "Resources",
+                "pages": [
+                    "resources/getting-help",
+                    "resources/faq"
+                ]
+            }
+        ]
+    }
+}
