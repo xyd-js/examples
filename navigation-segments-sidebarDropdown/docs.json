@@ -1,0 +1,45 @@
+{
+    "name": "Sidebar Dropdown — Nested",
+    "description": "A sidebar-dropdown section switcher with nested groups — entries with `pages` expand inline to another level of items, with icons.",
+    "theme": {
+        "name": "terrarium"
+    },
+    "navigation": {
+        "segments": [
+            {
+                "route": "platform",
+                "appearance": { "kind": "sidebarDropdown", "options": { "fixed": true } },
+                "pages": [
+                    { "title": "Documentation", "page": "platform/docs", "href": "platform/docs/getting-started", "icon": "book-open" },
+                    { "title": "API Reference", "page": "platform/api", "href": "platform/api/overview", "icon": "braces" },
+                    {
+                        "title": "SDKs",
+                        "icon": "package",
+                        "description": "Client libraries",
+                        "pages": [
+                            { "title": "JavaScript SDK", "page": "platform/sdk/js", "href": "platform/sdk/js/quickstart", "icon": "file-code" },
+                            { "title": "Python SDK", "page": "platform/sdk/py", "href": "platform/sdk/py/quickstart", "icon": "file-code" }
+                        ]
+                    },
+                    {
+                        "title": "Deployment",
+                        "icon": "server",
+                        "description": "Run it anywhere",
+                        "pages": [
+                            { "title": "Docker", "page": "platform/deploy/docker", "href": "platform/deploy/docker/setup", "icon": "container" },
+                            { "title": "Kubernetes", "page": "platform/deploy/k8s", "href": "platform/deploy/k8s/setup", "icon": "boxes" }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "sidebar": [
+            { "route": "/platform/docs", "pages": [{ "group": "Documentation", "pages": ["platform/docs/getting-started", "platform/docs/concepts"] }] },
+            { "route": "/platform/api", "pages": [{ "group": "API Reference", "pages": ["platform/api/overview"] }] },
+            { "route": "/platform/sdk/js", "pages": [{ "group": "JavaScript SDK", "pages": ["platform/sdk/js/quickstart"] }] },
+            { "route": "/platform/sdk/py", "pages": [{ "group": "Python SDK", "pages": ["platform/sdk/py/quickstart"] }] },
+            { "route": "/platform/deploy/docker", "pages": [{ "group": "Docker", "pages": ["platform/deploy/docker/setup"] }] },
+            { "route": "/platform/deploy/k8s", "pages": [{ "group": "Kubernetes", "pages": ["platform/deploy/k8s/setup"] }] }
+        ]
+    }
+}
