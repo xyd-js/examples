@@ -1,0 +1,917 @@
+openapi: 3.0.0
+info:
+  title: Sessions API
+  version: 1.0.0
+  description: Track and inspect user sessions.
+servers:
+  - url: https://api.example.com/v1
+paths:
+  /sessions:
+    get:
+      summary: List sessions
+      description: Retrieve a paginated list of sessions.
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 25
+          description: Max sessions per page
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - active
+              - ended
+          description: Filter by session status
+      responses:
+        '200':
+          description: A page of sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+      x-sdk:
+        go:
+          usage: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\n\t\"github.com/example/sessionsapi\"\n\t\"github.com/example/sessionsapi/option\"\n\t\"github.com/example/sessionsapi/packages/param\"\n)\n\nfunc main() {\n\tclient := sessionsapi.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\tresult, err := client.Sessions.List(\n\t\tcontext.TODO(),\n\t\tsessionsapi.SessionListParams{\n\t\t\tLimit: param.NewOpt[int64](25),\n\t\t\tStatus: param.NewOpt[sessionsapi.SessionsListStatus](sessionsapi.SessionsListStatusActive),\n\t\t},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf(\"%+v\\n\", result)\n}\n"
+          signature: client.Sessions.List(ctx, query) ([]Session, error)
+          types:
+            request:
+              typeName: SessionListParams
+              argName: query
+              fields:
+                - name: Limit
+                  langType: param.Opt[int64]
+                  required: false
+                  description: Max sessions per page
+                - name: Status
+                  langType: param.Opt[SessionsListStatus]
+                  required: false
+                  description: Filter by session status
+                  refTypeName: SessionsListStatus
+            response:
+              typeName: '[]Session'
+              langType: '[]Session'
+        python:
+          usage: |
+            import os
+
+            from sessions_api import Client
+
+            client = Client(
+                api_key=os.environ.get("SESSIONS_API_API_KEY"),
+            )
+
+            result = client.sessions.list(limit=25, status="active")
+            print(result)
+          signature: client.sessions.list(limit=..., status=...) -> list[Session]
+          types:
+            request:
+              fields:
+                - name: limit
+                  langType: Optional[int]
+                  required: false
+                  description: Max sessions per page
+                - name: status
+                  langType: Optional[SessionsListStatus]
+                  required: false
+                  description: Filter by session status
+                  refTypeName: SessionsListStatus
+            response:
+              typeName: list[Session]
+              langType: list[Session]
+        typescript:
+          usage: |
+            import SessionsApi from "sessions-api";
+
+            const client = new SessionsApi({
+              apiKey: process.env["SESSIONS_API_API_KEY"],
+            });
+
+            const result = await client.sessions.list({ limit: 25, status: "active" });
+            console.log(result);
+          signature: 'client.sessions.list(query?): Promise<Session[]>'
+          types:
+            request:
+              typeName: SessionListParams
+              argName: query
+              fields:
+                - name: limit
+                  langType: number
+                  required: false
+                  description: Max sessions per page
+                - name: status
+                  langType: SessionsListStatus
+                  required: false
+                  description: Filter by session status
+                  refTypeName: SessionsListStatus
+            response:
+              typeName: Session[]
+              langType: Session[]
+        ruby:
+          usage: |
+            require "sessions_api"
+
+            client = SessionsApi::Client.new(api_key: ENV["SESSIONS_API_API_KEY"])
+
+            result = client.sessions.list(limit: 25, status: "active")
+            pp result
+          signature: 'client.sessions.list(limit: nil, status: nil) -> Array<Models::Session>'
+          types:
+            request:
+              fields:
+                - name: limit
+                  langType: Integer
+                  required: false
+                  description: Max sessions per page
+                - name: status
+                  langType: Models::SessionsListStatus
+                  required: false
+                  description: Filter by session status
+                  refTypeName: SessionsListStatus
+            response:
+              typeName: Array<Models::Session>
+              langType: Array<Models::Session>
+        java:
+          usage: |
+            // Code generated by opensdk. DO NOT EDIT.
+
+            package com.example.sessionsapi;
+
+            public final class Example {
+              public static void main(String[] args) {
+                Client client = Client.builder().apiKey(System.getenv("SESSIONSAPI_API_KEY")).build();
+                var result = client.sessions().list(SessionListParams.builder()
+                      .limit(25L)
+                      .status(SessionsListStatus.ACTIVE)
+                      .build());
+                System.out.println(result);
+              }
+            }
+          signature: client.sessions().list(params) -> List<Session>
+          types:
+            request:
+              typeName: SessionListParams
+              argName: params
+              fields:
+                - name: limit
+                  langType: Optional<Long>
+                  required: false
+                  description: Max sessions per page
+                - name: status
+                  langType: Optional<SessionsListStatus>
+                  required: false
+                  description: Filter by session status
+                  refTypeName: SessionsListStatus
+            response:
+              typeName: List<Session>
+              langType: List<Session>
+        csharp:
+          usage: |
+            // <auto-generated>
+            //     Code generated by opensdk. DO NOT EDIT.
+            // </auto-generated>
+
+            using Example.SessionsApi;
+            using System;
+            using System.Collections.Generic;
+            using System.Threading.Tasks;
+
+            namespace Example.SessionsApi.Usage;
+
+            public static class Program
+            {
+                public static async Task Main()
+                {
+                    var client = new SessionsApiClient(apiKey: Environment.GetEnvironmentVariable("SESSIONS_API_API_KEY"));
+                    var result = await client.Sessions.List(25, SessionsListStatus.Active);
+                    Console.WriteLine(result);
+                }
+            }
+          signature: client.Sessions.List(limit, status) -> Task<List<Session>>
+          types:
+            request:
+              fields:
+                - name: limit
+                  langType: long?
+                  required: false
+                  description: Max sessions per page
+                - name: status
+                  langType: SessionsListStatus?
+                  required: false
+                  description: Filter by session status
+                  refTypeName: SessionsListStatus
+            response:
+              typeName: List<Session>
+              langType: List<Session>
+    post:
+      summary: Create a session
+      description: Start a new session for a visitor.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionInput'
+      responses:
+        '201':
+          description: Session created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+      x-sdk:
+        go:
+          usage: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\n\t\"github.com/example/sessionsapi\"\n\t\"github.com/example/sessionsapi/option\"\n)\n\nfunc main() {\n\tclient := sessionsapi.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\tresult, err := client.Sessions.New(\n\t\tcontext.TODO(),\n\t\tsessionsapi.SessionNewParams{\n\t\t\tVisitorID: \"string\",\n\t\t\tMetadata: map[string]string{\"key\": \"string\"},\n\t\t},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf(\"%+v\\n\", result)\n}\n"
+          signature: client.Sessions.New(ctx, body) (*Session, error)
+          types:
+            request:
+              typeName: SessionNewParams
+              argName: body
+              fields:
+                - name: VisitorID
+                  langType: string
+                  required: true
+                  description: The visitor starting the session
+                - name: Metadata
+                  langType: map[string]string
+                  required: false
+            response:
+              typeName: Session
+              fields:
+                - name: ID
+                  langType: string
+                  required: true
+                  description: Unique session id
+                - name: Visitor
+                  langType: Visitor
+                  required: true
+                  refTypeName: Visitor
+                - name: Status
+                  langType: SessionsListStatus
+                  required: true
+                  refTypeName: SessionsListStatus
+                - name: StartedAt
+                  langType: string
+                  required: false
+                - name: DurationSeconds
+                  langType: int64
+                  required: false
+        python:
+          usage: |
+            import os
+
+            from sessions_api import Client
+
+            client = Client(
+                api_key=os.environ.get("SESSIONS_API_API_KEY"),
+            )
+
+            result = client.sessions.create(visitor_id="string", metadata={"key": "string"})
+            print(result)
+          signature: client.sessions.create(visitor_id, metadata=...) -> Session
+          types:
+            request:
+              fields:
+                - name: visitor_id
+                  langType: str
+                  required: true
+                  description: The visitor starting the session
+                - name: metadata
+                  langType: Optional[dict[str, str]]
+                  required: false
+            response:
+              typeName: Session
+              fields:
+                - name: id
+                  langType: str
+                  required: true
+                  description: Unique session id
+                - name: visitor
+                  langType: Visitor
+                  required: true
+                  refTypeName: Visitor
+                - name: status
+                  langType: SessionsListStatus
+                  required: true
+                  refTypeName: SessionsListStatus
+                - name: started_at
+                  langType: str
+                  required: false
+                - name: duration_seconds
+                  langType: int
+                  required: false
+        typescript:
+          usage: |
+            import SessionsApi from "sessions-api";
+
+            const client = new SessionsApi({
+              apiKey: process.env["SESSIONS_API_API_KEY"],
+            });
+
+            const result = await client.sessions.create({ visitorId: "string", metadata: { key: "string" } });
+            console.log(result);
+          signature: 'client.sessions.create(body): Promise<Session>'
+          types:
+            request:
+              typeName: SessionCreateParams
+              argName: body
+              fields:
+                - name: visitorId
+                  langType: string
+                  required: true
+                  description: The visitor starting the session
+                - name: metadata
+                  langType: Record<string, string>
+                  required: false
+            response:
+              typeName: Session
+              fields:
+                - name: id
+                  langType: string
+                  required: true
+                  description: Unique session id
+                - name: visitor
+                  langType: Visitor
+                  required: true
+                  refTypeName: Visitor
+                - name: status
+                  langType: SessionsListStatus
+                  required: true
+                  refTypeName: SessionsListStatus
+                - name: startedAt
+                  langType: string
+                  required: false
+                - name: durationSeconds
+                  langType: number
+                  required: false
+        ruby:
+          usage: |
+            require "sessions_api"
+
+            client = SessionsApi::Client.new(api_key: ENV["SESSIONS_API_API_KEY"])
+
+            result = client.sessions.create(visitor_id: "string", metadata: { "key" => "string" })
+            pp result
+          signature: 'client.sessions.create(visitor_id:, metadata: nil) -> Models::Session'
+          types:
+            request:
+              fields:
+                - name: visitor_id
+                  langType: String
+                  required: true
+                  description: The visitor starting the session
+                - name: metadata
+                  langType: Hash{String => String}
+                  required: false
+            response:
+              typeName: Models::Session
+              fields:
+                - name: id
+                  langType: String
+                  required: true
+                  description: Unique session id
+                - name: visitor
+                  langType: Models::Visitor
+                  required: true
+                  refTypeName: Visitor
+                - name: status
+                  langType: Models::SessionsListStatus
+                  required: true
+                  refTypeName: SessionsListStatus
+                - name: started_at
+                  langType: String
+                  required: false
+                - name: duration_seconds
+                  langType: Integer
+                  required: false
+        java:
+          usage: |
+            // Code generated by opensdk. DO NOT EDIT.
+
+            package com.example.sessionsapi;
+
+            public final class Example {
+              public static void main(String[] args) {
+                Client client = Client.builder().apiKey(System.getenv("SESSIONSAPI_API_KEY")).build();
+                var result = client.sessions().create(SessionCreateParams.builder()
+                      .visitorId("string")
+                      .metadata(java.util.Map.of("key", "string"))
+                      .build());
+                System.out.println(result);
+              }
+            }
+          signature: client.sessions().create(params) -> Session
+          types:
+            request:
+              typeName: SessionCreateParams
+              argName: params
+              fields:
+                - name: visitorId
+                  langType: String
+                  required: true
+                  description: The visitor starting the session
+                - name: metadata
+                  langType: Optional<Map<String, String>>
+                  required: false
+            response:
+              typeName: Session
+              fields:
+                - name: id
+                  langType: String
+                  required: true
+                  description: Unique session id
+                - name: visitor
+                  langType: Visitor
+                  required: true
+                  refTypeName: Visitor
+                - name: status
+                  langType: SessionsListStatus
+                  required: true
+                  refTypeName: SessionsListStatus
+                - name: startedAt
+                  langType: String
+                  required: false
+                - name: durationSeconds
+                  langType: Long
+                  required: false
+        csharp:
+          usage: |
+            // <auto-generated>
+            //     Code generated by opensdk. DO NOT EDIT.
+            // </auto-generated>
+
+            using Example.SessionsApi;
+            using System;
+            using System.Collections.Generic;
+            using System.Threading.Tasks;
+
+            namespace Example.SessionsApi.Usage;
+
+            public static class Program
+            {
+                public static async Task Main()
+                {
+                    var client = new SessionsApiClient(apiKey: Environment.GetEnvironmentVariable("SESSIONS_API_API_KEY"));
+                    var result = await client.Sessions.Create(new SessionInput { VisitorId = "string", Metadata = new Dictionary<string, string> { ["key"] = "string" } });
+                    Console.WriteLine(result);
+                }
+            }
+          signature: client.Sessions.Create(body) -> Task<Session>
+          types:
+            request:
+              fields:
+                - name: VisitorId
+                  langType: string
+                  required: true
+                  description: The visitor starting the session
+                - name: Metadata
+                  langType: Dictionary<string, string>?
+                  required: false
+            response:
+              typeName: Session
+              fields:
+                - name: Id
+                  langType: string
+                  required: true
+                  description: Unique session id
+                - name: Visitor
+                  langType: Visitor
+                  required: true
+                  refTypeName: Visitor
+                - name: Status
+                  langType: SessionsListStatus
+                  required: true
+                  refTypeName: SessionsListStatus
+                - name: StartedAt
+                  langType: string
+                  required: false
+                - name: DurationSeconds
+                  langType: long
+                  required: false
+  /sessions/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Session ID
+    get:
+      summary: Get a session
+      description: Retrieve a single session by its ID.
+      responses:
+        '200':
+          description: The session
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-sdk:
+        go:
+          usage: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\n\t\"github.com/example/sessionsapi\"\n\t\"github.com/example/sessionsapi/option\"\n)\n\nfunc main() {\n\tclient := sessionsapi.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\tresult, err := client.Sessions.Get(context.TODO(), \"id\")\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf(\"%+v\\n\", result)\n}\n"
+          signature: client.Sessions.Get(ctx, id) (*Session, error)
+          types:
+            request:
+              fields: []
+            response:
+              typeName: Session
+              fields:
+                - name: ID
+                  langType: string
+                  required: true
+                  description: Unique session id
+                - name: Visitor
+                  langType: Visitor
+                  required: true
+                  refTypeName: Visitor
+                - name: Status
+                  langType: SessionsListStatus
+                  required: true
+                  refTypeName: SessionsListStatus
+                - name: StartedAt
+                  langType: string
+                  required: false
+                - name: DurationSeconds
+                  langType: int64
+                  required: false
+        python:
+          usage: |
+            import os
+
+            from sessions_api import Client
+
+            client = Client(
+                api_key=os.environ.get("SESSIONS_API_API_KEY"),
+            )
+
+            result = client.sessions.retrieve("id")
+            print(result)
+          signature: client.sessions.retrieve(id) -> Session
+          types:
+            request:
+              fields: []
+            response:
+              typeName: Session
+              fields:
+                - name: id
+                  langType: str
+                  required: true
+                  description: Unique session id
+                - name: visitor
+                  langType: Visitor
+                  required: true
+                  refTypeName: Visitor
+                - name: status
+                  langType: SessionsListStatus
+                  required: true
+                  refTypeName: SessionsListStatus
+                - name: started_at
+                  langType: str
+                  required: false
+                - name: duration_seconds
+                  langType: int
+                  required: false
+        typescript:
+          usage: |
+            import SessionsApi from "sessions-api";
+
+            const client = new SessionsApi({
+              apiKey: process.env["SESSIONS_API_API_KEY"],
+            });
+
+            const result = await client.sessions.retrieve("id");
+            console.log(result);
+          signature: 'client.sessions.retrieve(id): Promise<Session>'
+          types:
+            request:
+              fields: []
+            response:
+              typeName: Session
+              fields:
+                - name: id
+                  langType: string
+                  required: true
+                  description: Unique session id
+                - name: visitor
+                  langType: Visitor
+                  required: true
+                  refTypeName: Visitor
+                - name: status
+                  langType: SessionsListStatus
+                  required: true
+                  refTypeName: SessionsListStatus
+                - name: startedAt
+                  langType: string
+                  required: false
+                - name: durationSeconds
+                  langType: number
+                  required: false
+        ruby:
+          usage: |
+            require "sessions_api"
+
+            client = SessionsApi::Client.new(api_key: ENV["SESSIONS_API_API_KEY"])
+
+            result = client.sessions.retrieve("id")
+            pp result
+          signature: client.sessions.retrieve(id) -> Models::Session
+          types:
+            request:
+              fields: []
+            response:
+              typeName: Models::Session
+              fields:
+                - name: id
+                  langType: String
+                  required: true
+                  description: Unique session id
+                - name: visitor
+                  langType: Models::Visitor
+                  required: true
+                  refTypeName: Visitor
+                - name: status
+                  langType: Models::SessionsListStatus
+                  required: true
+                  refTypeName: SessionsListStatus
+                - name: started_at
+                  langType: String
+                  required: false
+                - name: duration_seconds
+                  langType: Integer
+                  required: false
+        java:
+          usage: |
+            // Code generated by opensdk. DO NOT EDIT.
+
+            package com.example.sessionsapi;
+
+            public final class Example {
+              public static void main(String[] args) {
+                Client client = Client.builder().apiKey(System.getenv("SESSIONSAPI_API_KEY")).build();
+                var result = client.sessions().retrieve("id");
+                System.out.println(result);
+              }
+            }
+          signature: client.sessions().retrieve(id) -> Session
+          types:
+            request:
+              fields: []
+            response:
+              typeName: Session
+              fields:
+                - name: id
+                  langType: String
+                  required: true
+                  description: Unique session id
+                - name: visitor
+                  langType: Visitor
+                  required: true
+                  refTypeName: Visitor
+                - name: status
+                  langType: SessionsListStatus
+                  required: true
+                  refTypeName: SessionsListStatus
+                - name: startedAt
+                  langType: String
+                  required: false
+                - name: durationSeconds
+                  langType: Long
+                  required: false
+        csharp:
+          usage: |
+            // <auto-generated>
+            //     Code generated by opensdk. DO NOT EDIT.
+            // </auto-generated>
+
+            using Example.SessionsApi;
+            using System;
+            using System.Collections.Generic;
+            using System.Threading.Tasks;
+
+            namespace Example.SessionsApi.Usage;
+
+            public static class Program
+            {
+                public static async Task Main()
+                {
+                    var client = new SessionsApiClient(apiKey: Environment.GetEnvironmentVariable("SESSIONS_API_API_KEY"));
+                    var result = await client.Sessions.Retrieve("id");
+                    Console.WriteLine(result);
+                }
+            }
+          signature: client.Sessions.Retrieve(id) -> Task<Session>
+          types:
+            request:
+              fields: []
+            response:
+              typeName: Session
+              fields:
+                - name: Id
+                  langType: string
+                  required: true
+                  description: Unique session id
+                - name: Visitor
+                  langType: Visitor
+                  required: true
+                  refTypeName: Visitor
+                - name: Status
+                  langType: SessionsListStatus
+                  required: true
+                  refTypeName: SessionsListStatus
+                - name: StartedAt
+                  langType: string
+                  required: false
+                - name: DurationSeconds
+                  langType: long
+                  required: false
+    delete:
+      summary: End a session
+      description: End a running session.
+      responses:
+        '204':
+          description: Session ended
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-sdk:
+        go:
+          usage: "package main\n\nimport (\n\t\"context\"\n\n\t\"github.com/example/sessionsapi\"\n\t\"github.com/example/sessionsapi/option\"\n)\n\nfunc main() {\n\tclient := sessionsapi.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\terr := client.Sessions.Delete(context.TODO(), \"id\")\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n}\n"
+          signature: client.Sessions.Delete(ctx, id) error
+          types:
+            request:
+              fields: []
+            response:
+              langType: error
+              note: no response body
+        python:
+          usage: |
+            import os
+
+            from sessions_api import Client
+
+            client = Client(
+                api_key=os.environ.get("SESSIONS_API_API_KEY"),
+            )
+
+            client.sessions.delete("id")
+          signature: client.sessions.delete(id) -> None
+          types:
+            request:
+              fields: []
+            response:
+              langType: None
+              note: no response body
+        typescript:
+          usage: |
+            import SessionsApi from "sessions-api";
+
+            const client = new SessionsApi({
+              apiKey: process.env["SESSIONS_API_API_KEY"],
+            });
+
+            await client.sessions.delete("id");
+          signature: 'client.sessions.delete(id): Promise<void>'
+          types:
+            request:
+              fields: []
+            response:
+              langType: void
+              note: no response body
+        ruby:
+          usage: |
+            require "sessions_api"
+
+            client = SessionsApi::Client.new(api_key: ENV["SESSIONS_API_API_KEY"])
+
+            client.sessions.delete("id")
+          signature: client.sessions.delete(id) -> nil
+          types:
+            request:
+              fields: []
+            response:
+              langType: nil
+              note: no response body
+        java:
+          usage: |
+            // Code generated by opensdk. DO NOT EDIT.
+
+            package com.example.sessionsapi;
+
+            public final class Example {
+              public static void main(String[] args) {
+                Client client = Client.builder().apiKey(System.getenv("SESSIONSAPI_API_KEY")).build();
+                client.sessions().delete("id");
+              }
+            }
+          signature: client.sessions().delete(id) -> void
+          types:
+            request:
+              fields: []
+            response:
+              langType: void
+              note: no response body
+        csharp:
+          usage: |
+            // <auto-generated>
+            //     Code generated by opensdk. DO NOT EDIT.
+            // </auto-generated>
+
+            using Example.SessionsApi;
+            using System;
+            using System.Collections.Generic;
+            using System.Threading.Tasks;
+
+            namespace Example.SessionsApi.Usage;
+
+            public static class Program
+            {
+                public static async Task Main()
+                {
+                    var client = new SessionsApiClient(apiKey: Environment.GetEnvironmentVariable("SESSIONS_API_API_KEY"));
+                    await client.Sessions.Delete("id");
+                }
+            }
+          signature: client.Sessions.Delete(id) -> Task
+          types:
+            request:
+              fields: []
+            response:
+              langType: Task
+              note: no response body
+components:
+  schemas:
+    Session:
+      type: object
+      required:
+        - id
+        - visitor
+        - status
+      properties:
+        id:
+          type: string
+          description: Unique session id
+        visitor:
+          $ref: '#/components/schemas/Visitor'
+        status:
+          type: string
+          enum:
+            - active
+            - ended
+        startedAt:
+          type: string
+          format: date-time
+        durationSeconds:
+          type: integer
+    Visitor:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        country:
+          type: string
+    SessionInput:
+      type: object
+      required:
+        - visitorId
+      properties:
+        visitorId:
+          type: string
+          description: The visitor starting the session
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+x-sdk:
+  languages:
+    - go
+    - python
+    - typescript
+    - ruby
+    - java
+    - csharp

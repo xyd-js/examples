@@ -1,0 +1,43 @@
+{
+    "name": "OpenSDK + OpenAPI \u2014 Chosen Languages",
+    "description": "SDK-native API reference restricted to selected languages \u2014 sdk: { languages: [\"typescript\", \"python\"] }.",
+    "theme": {
+        "name": "terrarium"
+    },
+    "navigation": {
+        "tabs": [
+            {
+                "title": "API Reference",
+                "page": "docs/api"
+            }
+        ],
+        "sidebar": [
+            {
+                "route": "docs/api",
+                "pages": [
+                    {
+                        "group": "Get Started",
+                        "order": 0,
+                        "pages": [
+                            "docs/api/introduction"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "api": {
+        "openapi": [
+            {
+                "source": "./sessions-api.yaml",
+                "route": "docs/api",
+                "sdk": {
+                    "languages": [
+                        "typescript",
+                        "python"
+                    ]
+                }
+            }
+        ]
+    }
+}
