@@ -1,0 +1,27 @@
+{
+    "name": "Virtual pages",
+    "description": "Pages whose URL differs from the file path — per-runtime variants of the same doc (logs.angular.md, logs.bun.md) served under a clean URL scheme (/docs/angular/logs, /docs/bun/logs).",
+    "theme": {
+        "name": "poetry"
+    },
+    "navigation": {
+        "sidebar": [
+            {
+                "route": "docs",
+                "pages": [
+                    {
+                        "group": "Get Started",
+                        "pages": ["docs/index"]
+                    },
+                    {
+                        "group": "Logs",
+                        "pages": [
+                            { "page": "docs/angular/logs", "source": "docs/logs.angular" },
+                            { "page": "docs/bun/logs", "source": "docs/logs.bun" }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
