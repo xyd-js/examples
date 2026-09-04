@@ -1,0 +1,38 @@
+{
+    "name": "OpenSDK + OpenAPI",
+    "description": "SDK-native API reference generated at build time \u2014 per-language types, signatures and usage samples; the raw HTTP/cURL view is the default, SDKs one switch away.",
+    "theme": {
+        "name": "terrarium"
+    },
+    "navigation": {
+        "tabs": [
+            {
+                "title": "API Reference",
+                "page": "docs/api"
+            }
+        ],
+        "sidebar": [
+            {
+                "route": "docs/api",
+                "pages": [
+                    {
+                        "group": "Get Started",
+                        "order": 0,
+                        "pages": [
+                            "docs/api/introduction"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "api": {
+        "openapi": [
+            {
+                "source": "./sessions-api.yaml",
+                "route": "docs/api",
+                "sdk": true
+            }
+        ]
+    }
+}

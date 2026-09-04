@@ -1,0 +1,112 @@
+openapi: 3.0.0
+info:
+  title: Sessions API
+  version: 1.0.0
+  description: Track and inspect user sessions.
+
+servers:
+  - url: https://api.example.com/v1
+
+paths:
+  /sessions:
+    get:
+      summary: List sessions
+      description: Retrieve a paginated list of sessions.
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema: { type: integer, default: 25 }
+          description: Max sessions per page
+        - name: status
+          in: query
+          required: false
+          schema: { type: string, enum: [active, ended] }
+          description: Filter by session status
+      responses:
+        '200':
+          description: A page of sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Session' }
+    post:
+      summary: Create a session
+      description: Start a new session for a visitor.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/SessionInput' }
+      responses:
+        '201':
+          description: Session created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Session' }
+
+  /sessions/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+        description: Session ID
+    get:
+      summary: Get a session
+      description: Retrieve a single session by its ID.
+      responses:
+        '200':
+          description: The session
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Session' }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+    delete:
+      summary: End a session
+      description: End a running session.
+      responses:
+        '204':
+          description: Session ended
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+
+components:
+  schemas:
+    Session:
+      type: object
+      required: [id, visitor, status]
+      properties:
+        id: { type: string, description: Unique session id }
+        visitor: { $ref: '#/components/schemas/Visitor' }
+        status: { type: string, enum: [active, ended] }
+        startedAt: { type: string, format: date-time }
+        durationSeconds: { type: integer }
+    Visitor:
+      type: object
+      required: [id]
+      properties:
+        id: { type: string }
+        email: { type: string }
+        country: { type: string }
+    SessionInput:
+      type: object
+      required: [visitorId]
+      properties:
+        visitorId: { type: string, description: The visitor starting the session }
+        metadata:
+          type: object
+          additionalProperties: { type: string }
+    Error:
+      type: object
+      required: [message]
+      properties:
+        message: { type: string }

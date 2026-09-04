@@ -1,0 +1,37 @@
+{
+    "name": "OpenSDK + OpenAPI (x-sdk)",
+    "description": "SDK docs carried by the spec itself — the OpenAPI file ships with x-sdk extensions embedded upstream in CI/CD, so the docs build just reads them. No sdk flag in docs.json.",
+    "theme": {
+        "name": "terrarium"
+    },
+    "navigation": {
+        "tabs": [
+            {
+                "title": "API Reference",
+                "page": "docs/api"
+            }
+        ],
+        "sidebar": [
+            {
+                "route": "docs/api",
+                "pages": [
+                    {
+                        "group": "Get Started",
+                        "order": 0,
+                        "pages": [
+                            "docs/api/introduction"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "api": {
+        "openapi": [
+            {
+                "source": "./sessions-api.xsdk.yaml",
+                "route": "docs/api"
+            }
+        ]
+    }
+}
