@@ -1,0 +1,24 @@
+{
+    "name": "Page context controls — dropdown grouping",
+    "description": "Explicit combining: a dropdown control merges chosen actions into ONE menu; anything not grouped renders as its own button — mix both on one page.",
+    "theme": { "name": "poetry" },
+    "components": {
+        "contextControls": [
+            {
+                "type": "dropdown",
+                "appearance": "header",
+                "options": { "controls": ["copy", "view-markdown", "chatgpt", "claude"] }
+            }
+        ]
+    },
+    "navigation": {
+        "sidebar": [
+            {
+                "route": "docs",
+                "pages": [
+                    { "group": "Grouping", "pages": ["docs/index", "docs/mixed", "docs/toc-dropdown"] }
+                ]
+            }
+        ]
+    }
+}

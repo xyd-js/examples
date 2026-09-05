@@ -1,0 +1,21 @@
+{
+    "name": "Page context controls",
+    "description": "Contextual page actions at three slots — header, toc-top, toc-bottom — declared globally, per page (frontmatter), with the simple string form or typed overrides.",
+    "theme": { "name": "poetry" },
+    "components": {
+        "contextControls": ["copy"]
+    },
+    "navigation": {
+        "sidebar": [
+            {
+                "route": "docs",
+                "pages": [
+                    {
+                        "group": "Slots",
+                        "pages": ["docs/index", "docs/toc-top", "docs/toc-bottom", "docs/everywhere", "docs/opt-out"]
+                    }
+                ]
+            }
+        ]
+    }
+}
