@@ -1,0 +1,40 @@
+{
+    "name": "Page context controls — custom components",
+    "description": "Fully custom controls via the { import, props } pattern — declared globally or on a sidebar page entry, rendered at any slot.",
+    "theme": { "name": "poetry" },
+    "components": {
+        "contextControls": [
+            {
+                "type": "custom",
+                "appearance": "toc-bottom",
+                "component": { "import": "./components/Feedback", "props": { "label": "Was this helpful?" } }
+            }
+        ]
+    },
+    "navigation": {
+        "sidebar": [
+            {
+                "route": "docs",
+                "pages": [
+                    {
+                        "group": "Custom",
+                        "pages": [
+                            "docs/index",
+                            {
+                                "page": "docs/status",
+                                "title": "Status",
+                                "contextControls": [
+                                    {
+                                        "type": "custom",
+                                        "appearance": "header",
+                                        "component": { "import": "./components/StatusBadge", "props": { "status": "beta" } }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

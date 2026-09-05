@@ -1,0 +1,52 @@
+{
+    "name": "Page context controls \u2014 content version (page sidebar)",
+    "description": "Controls declared on the SIDEBAR page entry, with the same-URL content swap: one URL, a configurable query param (?runtime=\u2026) picks which markdown source renders.",
+    "theme": {
+        "name": "poetry"
+    },
+    "navigation": {
+        "sidebar": [
+            {
+                "route": "docs",
+                "pages": [
+                    {
+                        "group": "Get Started",
+                        "pages": [
+                            "docs/index"
+                        ]
+                    },
+                    {
+                        "group": "Logs",
+                        "pages": [
+                            {
+                                "page": "docs/logs",
+                                "title": "Logs",
+                                "contextControls": [
+                                    {
+                                        "type": "content-version",
+                                        "appearance": "toc-top",
+                                        "options": {
+                                            "queryParam": "runtime",
+                                            "versions": [
+                                                {
+                                                    "title": "Angular",
+                                                    "description": "Logs in Angular apps."
+                                                },
+                                                {
+                                                    "title": "Bun",
+                                                    "description": "Logs in Bun apps.",
+                                                    "source": "docs/logs.bun",
+                                                    "value": "bun"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
