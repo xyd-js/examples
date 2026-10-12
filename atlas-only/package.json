@@ -1,0 +1,15 @@
+{
+  "name": "atlas-only",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@xyd-js/cli": "latest"
+  },
+  "scripts": {
+    "dev": "xyd dev ./openapi.yaml",
+    "build": "xyd build ./openapi.yaml"
+  },
+  "engines": {
+    "node": "22"
+  }
+}
